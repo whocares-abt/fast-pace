@@ -19,7 +19,7 @@ position = Vector2(2, 50)
 position = Vector2(-37, 87)
 
 [node name="Bullet" parent="." instance=ExtResource("2_o67dp")]
-position = Vector2(-678, 58)
+position = Vector2(-178, 90)
 
 [node name="EnemyCharacter" parent="." instance=ExtResource("4_6mob1")]
 position = Vector2(-189, 56)

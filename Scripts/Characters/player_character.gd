@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+@onready var weapon = $Weapon
+
+func _input(event: InputEvent) -> void:
+	if (event.is_action_pressed("attack")):
+		weapon.attack(Vector2(1, 0))
+
 func _physics_process(_delta: float) -> void:
 
 	var direction_x = Input.get_axis("move_left", "move_right")

@@ -6,7 +6,9 @@ func add_hurtbox_owner(new_owner):
 	hurtbox_owners.append(new_owner)
 
 func enable_hurtbox():
-	pass
+	monitorable = true
+	monitoring = true
 
 func disable_hurtbox():
-	pass
+	monitorable = false
+	monitoring = false

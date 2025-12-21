@@ -22,6 +22,4 @@ func set_speed(new_speed):
 	velocity *= (new_speed)/velocity.length()
 
 func _on_environment_collider_body_entered(body: Node2D) -> void:
-	if (body):
-		pass
 	queue_free()
