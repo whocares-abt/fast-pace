@@ -7,6 +7,8 @@
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
 
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+
 [node name="Wall" parent="." instance=ExtResource("2_jcsea")]
 position = Vector2(-153, 19)
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://1k1mbodf3mqu"]
+
+[ext_resource type="Script" uid="uid://dqsfxyh6jojdx" path="res://Scripts/Resources/Weapons/weapon_stats.gd" id="1_0sgi0"]
+[ext_resource type="Resource" uid="uid://dbfn3dm3er186" path="res://Resources/Weapons/pistol_bullet.tres" id="1_kmy37"]
+
+[resource]
+script = ExtResource("1_0sgi0")
+ranged = true
+projectile = ExtResource("1_kmy37")
+firing_rate = 1.0
+damage = 100.0
+pellet_count = 1
+metadata/_custom_type_script = "uid://dqsfxyh6jojdx"
