@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dxcbidm4wn21l"]
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://dxcbidm4wn21l"]
 
 [ext_resource type="Script" uid="uid://dqsfxyh6jojdx" path="res://Scripts/Resources/Weapons/weapon_stats.gd" id="1_5yd16"]
+[ext_resource type="Texture2D" uid="uid://dsi6peaxa3a52" path="res://Assets/Art/Textures/katana.png" id="2_tr08d"]
 
 [resource]
 script = ExtResource("1_5yd16")
+texture = ExtResource("2_tr08d")
+firing_rate = 1.0
 damage = 100.0
 metadata/_custom_type_script = "uid://dqsfxyh6jojdx"

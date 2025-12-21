@@ -10,7 +10,7 @@ extends Resource
 @export var damage : float
 
 # Stats for melee weapons
-var attack_hitbox : Area2D
+# var attack_hitbox : Area2D
 
 # Stats for ranged weapons
 @export var spread : float
