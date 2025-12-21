@@ -1,13 +1,14 @@
 extends Node2D
 
 @onready var hurtbox = $Hurtbox
+@onready var environment_collider = $EnvironmentCollider
 
 @export var velocity : Vector2 = Vector2(700, 0)
 
 func set_hurtbox_owner(new_owner):
 	hurtbox.set_hurtbox_owner(new_owner)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	position += (velocity*delta)
 
 func set_velocity(new_velocity):
@@ -19,3 +20,8 @@ func set_direction(new_direction : Vector2):
 
 func set_speed(new_speed):
 	velocity *= (new_speed)/velocity.length()
+
+func _on_environment_collider_body_entered(body: Node2D) -> void:
+	if (body):
+		pass
+	queue_free()

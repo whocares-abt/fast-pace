@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://uriwqjsj2l17"]
+[gd_scene load_steps=8 format=3 uid="uid://uriwqjsj2l17"]
 
 [ext_resource type="Texture2D" uid="uid://bkgx3t4wcwml7" path="res://Assets/Art/SpriteSheets/Enemy.png" id="1_kjxs3"]
+[ext_resource type="Script" uid="uid://rgjg7yqphkf0" path="res://Scripts/Characters/enemy_character.gd" id="1_nraa5"]
+[ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_sdh2x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nraa5"]
 atlas = ExtResource("1_kjxs3")
@@ -17,7 +19,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyCharacter" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nraa5"]
+radius = 16.03122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdh2x"]
+radius = 17.0
+
+[node name="EnemyCharacter" type="CharacterBody2D"]
+script = ExtResource("1_nraa5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdh2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nraa5")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_sdh2x")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_sdh2x")
+
+[connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]

@@ -16,7 +16,7 @@ height = 16.0
 script = ExtResource("1_h4bvn")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_2qxdl")]
-hurtbox_owner = "Enemy"
+hurtbox_owner = "Player"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5707964
@@ -25,8 +25,13 @@ shape = SubResource("CapsuleShape2D_3m52h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_2qxdl")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="EnvironmentCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvironmentCollider"]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2qxdl")
+
+[connection signal="area_entered" from="EnvironmentCollider" to="." method="_on_environment_collider_area_entered"]
+[connection signal="body_entered" from="EnvironmentCollider" to="." method="_on_environment_collider_body_entered"]
