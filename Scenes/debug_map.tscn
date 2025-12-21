@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=3 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
+[ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
+
+[node name="Wall" parent="." instance=ExtResource("2_jcsea")]
+position = Vector2(-153, 19)
+
+[node name="Wall2" parent="." instance=ExtResource("2_jcsea")]
+position = Vector2(75, 143)
