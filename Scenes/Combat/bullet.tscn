@@ -16,7 +16,7 @@ height = 16.0
 script = ExtResource("1_h4bvn")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_2qxdl")]
-hurtbox_owner = "Player"
+hurtbox_owners = Array[String](["Enemy", "Player"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 rotation = 1.5707964

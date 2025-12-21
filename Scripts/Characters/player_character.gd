@@ -20,5 +20,5 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
-	if (area.hurtbox_owner == "Enemy"):
+	if ("Enemy" in area.hurtbox_owners):
 		self.queue_free()

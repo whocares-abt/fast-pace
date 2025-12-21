@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var hurtbox_owner = ""
+@export var hurtbox_owners : Array[String]
 
-func set_hurtbox_owner(new_owner):
-	hurtbox_owner = new_owner
+func add_hurtbox_owner(new_owner):
+	hurtbox_owners.append(new_owner)
