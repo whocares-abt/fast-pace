@@ -14,6 +14,7 @@ var projectile : Node2D # Projectile being shot by gun
 
 # Stats for melee weapons
 # var attack_hitbox : Area2D
+@export var melee_attack_hold : float
 
 # Stats for ranged weapons
 #@export var spread : float
