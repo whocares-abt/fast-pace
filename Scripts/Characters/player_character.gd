@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
-
 
 func _physics_process(delta: float) -> void:
 
@@ -20,3 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+func _on_hitbox_hurtbox_entered(area: Variant) -> void:
+	if (area.hurtbox_owner == "Enemy"):
+		self.queue_free()

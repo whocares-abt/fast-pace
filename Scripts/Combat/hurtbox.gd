@@ -1,4 +1,6 @@
 extends Area2D
 
-var on_hit : Callable = func():
-	pass
+@export var hurtbox_owner = ""
+
+func set_hurtbox_owner(new_owner):
+	hurtbox_owner = new_owner

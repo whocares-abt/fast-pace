@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://nbsjmjd7do3s"]
+[gd_scene load_steps=2 format=3 uid="uid://nbsjmjd7do3s"]
+
+[ext_resource type="Script" uid="uid://dffme2003u822" path="res://Scripts/Combat/weapon.gd" id="1_krqjp"]
 
 [node name="Weapon" type="Node2D"]
+script = ExtResource("1_krqjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

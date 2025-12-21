@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfeafjqb4thpf"]
+[gd_scene load_steps=8 format=3 uid="uid://cfeafjqb4thpf"]
 
 [ext_resource type="Script" uid="uid://dxgq4xe00pby6" path="res://Scripts/Characters/player_character.gd" id="1_l560e"]
 [ext_resource type="Texture2D" uid="uid://blfonbnnkwt7m" path="res://Assets/Art/SpriteSheets/Player.png" id="2_c2rcm"]
+[ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_i26gt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oigcr"]
 radius = 16.03122
@@ -21,6 +22,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pywu"]
+radius = 17.0
+
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_l560e")
 
@@ -29,3 +33,10 @@ shape = SubResource("CircleShape2D_oigcr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oigcr")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_i26gt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_3pywu")
+
+[connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]

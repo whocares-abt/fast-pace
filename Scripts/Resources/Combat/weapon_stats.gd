@@ -2,7 +2,7 @@ class_name WeaponStats
 extends Resource
 
 @export var ranged : bool
-@export var projectile : ProjectileStats
+var projectile : Node2D # Projectile being shot by gun
 @export var texture : Texture2D
 
 # Stats for both ranged and melee weapons
