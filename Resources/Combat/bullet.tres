@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileStats" load_steps=3 format=3 uid="uid://dbfn3dm3er186"]
 
-[ext_resource type="Script" uid="uid://75h73c0x0med" path="res://Scripts/Resources/Weapons/projectile_stats.gd" id="1_6i23q"]
+[ext_resource type="Script" uid="uid://75h73c0x0med" path="res://Scripts/Resources/Combat/projectile_stats.gd" id="1_6i23q"]
 [ext_resource type="Texture2D" uid="uid://x31o6ma1jwj7" path="res://Assets/Art/Textures/bullet.png" id="2_e54fc"]
 
 [resource]

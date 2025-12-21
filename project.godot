@@ -45,9 +45,8 @@ move_right={
 [layer_names]
 
 2d_physics/layer_1="Physics"
-2d_physics/layer_2="PlayerHitBox"
-2d_physics/layer_3="EnemyHitBox"
-2d_physics/layer_4="Interactable"
+2d_physics/layer_2="Hitbox"
+2d_physics/layer_3="Interactable"
 
 [rendering]
 

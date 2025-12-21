@@ -14,6 +14,7 @@ extends Resource
 
 # Stats for ranged weapons
 @export var spread : float
+@export var projectile_speed : float
 
 # Number of bullets shot in one shot and the interval range
 @export var pellet_count : int
