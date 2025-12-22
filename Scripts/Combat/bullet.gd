@@ -14,7 +14,7 @@ func add_hurtbox_owners(new_owners):
 
 func _ready() -> void:
 	await get_tree().create_timer(0.05).timeout
-	#enable_particles()
+	enable_particles()
 
 func _process(delta: float) -> void:
 	position += (velocity*delta)

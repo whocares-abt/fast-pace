@@ -35,10 +35,9 @@ shape = SubResource("CapsuleShape2D_2qxdl")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 4
 lifetime = 0.5
 trail_enabled = true
-trail_lifetime = 0.15000000000000002
+trail_lifetime = 0.06999999999999999
 process_material = ExtResource("4_3m52h")
 
 [connection signal="area_entered" from="EnvironmentCollider" to="." method="_on_environment_collider_area_entered"]

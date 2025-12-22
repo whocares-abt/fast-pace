@@ -3,8 +3,6 @@
 [resource]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(-7, 0, 0)
-emission_shape = 1
-emission_sphere_radius = 1.0
 inherit_velocity_ratio = 1.0
 gravity = Vector3(-100, 0, 0)
-color = Color(0.8868507, 0.7082753, 0, 1)
+color = Color(0.99607843, 0.90588236, 0.38039216, 1)
