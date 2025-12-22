@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b7gqg47jgrs8k"]
+
+[ext_resource type="Texture2D" uid="uid://dsi6peaxa3a52" path="res://Assets/Art/Textures/katana.png" id="1_uxv4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vga2"]
+atlas = ExtResource("1_uxv4s")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vga2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

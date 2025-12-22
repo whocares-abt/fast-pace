@@ -5,11 +5,15 @@ extends Node2D
 
 @export var velocity : Vector2 = Vector2(700, 0)
 
-func set_hurtbox_owner(new_owner):
-	hurtbox.set_hurtbox_owner(new_owner)
+@export var map_edge = 1500
+
+func add_hurtbox_owner(new_owner):
+	hurtbox.add_hurtbox_owner(new_owner)
 
 func _process(delta: float) -> void:
 	position += (velocity*delta)
+	if (abs(position.x) > map_edge || abs(position.y) > map_edge):
+		queue_free()
 
 func set_velocity(new_velocity):
 	velocity = new_velocity

@@ -28,18 +28,22 @@ func _ready() -> void:
 	
 	melee_hurtbox.add_hurtbox_owner("Player")
 	melee_hurtbox.disable_hurtbox()
-	sprite.visible = false
+	sprite.play("idle")
 
 func attack(attack_direction : Vector2):
+	sprite.play("attack")
+
 	if (ranged):
-		projectile.instantiate()
-		projectile.set_speed(projectile_speed)
-		projectile.set_direction(attack_direction)
+		var bullet = projectile.instantiate()
+		add_child(bullet)
+		bullet.set_speed(projectile_speed)
+		bullet.set_direction(attack_direction)
+		bullet.add_hurtbox_owner("Player")
 	else:
-		sprite.visible = true
 		melee_hurtbox.enable_hurtbox()
 		await get_tree().create_timer(melee_attack_hold).timeout
 		melee_hurtbox.disable_hurtbox()
-		sprite.visible = false
+	
+	sprite.play("idle")
 
 	await  get_tree().create_timer(1/firing_rate).timeout
