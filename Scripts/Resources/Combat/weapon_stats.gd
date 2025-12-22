@@ -13,8 +13,12 @@ var projectile : Node2D # Projectile being shot by gun
 #@export var damage : float
 
 # Stats for melee weapons
+# TO DO : Differentiate between attack hold and animation hold
 # var attack_hitbox : Area2D
-@export var melee_attack_hold : float
+@export var attack_hold : float
+# For range weapons attack hold is simply for animation
+# For melee weapons attack hold shows length of time hitbox remains
+
 
 # Stats for ranged weapons
 #@export var spread : float

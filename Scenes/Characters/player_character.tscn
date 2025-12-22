@@ -30,7 +30,6 @@ radius = 17.0
 script = ExtResource("1_l560e")
 
 [node name="Weapon" parent="." instance=ExtResource("2_3pywu")]
-position = Vector2(30, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oigcr")

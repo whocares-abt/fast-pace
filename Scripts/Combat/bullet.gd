@@ -21,9 +21,11 @@ func set_velocity(new_velocity):
 func set_direction(new_direction : Vector2):
 	assert(new_direction.x != 0 or new_direction.y != 0)
 	velocity = velocity.length() * (new_direction.normalized())
+	print(new_direction)
+	print(velocity)
 
 func set_speed(new_speed):
 	velocity *= (new_speed)/velocity.length()
 
-func _on_environment_collider_body_entered(body: Node2D) -> void:
+func _on_environment_collider_body_entered(_body: Node2D) -> void:
 	queue_free()

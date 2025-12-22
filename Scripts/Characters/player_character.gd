@@ -6,7 +6,10 @@ const SPEED = 300.0
 
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("attack")):
-		weapon.attack(Vector2(1, 0))
+		var mouse_pos = get_global_mouse_position()
+		var mouse_to_player = mouse_pos - position
+
+		weapon.attack(mouse_to_player.normalized())
 
 func _physics_process(_delta: float) -> void:
 

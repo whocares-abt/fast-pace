@@ -11,9 +11,9 @@ var firing_rate : float
 var projectile_speed : float
 
 # Melee weapons
-var melee_attack_hold  : float
+var attack_hold  : float
 
-var stats : WeaponStats = load("res://Resources/Combat/katana.tres")
+var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
 
 @onready var melee_hurtbox = $AttackHurtbox
 @onready var sprite = $AnimatedSprite2D
@@ -24,14 +24,16 @@ func _ready() -> void:
 	weapon_name = stats.weapon_name
 	firing_rate = stats.firing_rate
 	projectile_speed = stats.projectile_speed
-	melee_attack_hold = stats.melee_attack_hold
+	attack_hold = stats.attack_hold
 	
 	melee_hurtbox.add_hurtbox_owner("Player")
 	melee_hurtbox.disable_hurtbox()
-	sprite.play("idle")
 
 func attack(attack_direction : Vector2):
 	sprite.play("attack")
+
+	# Rotate node to rotate sprite and hurtbox
+	rotation = attack_direction.angle()
 
 	if (ranged):
 		var bullet = projectile.instantiate()
@@ -39,11 +41,16 @@ func attack(attack_direction : Vector2):
 		bullet.set_speed(projectile_speed)
 		bullet.set_direction(attack_direction)
 		bullet.add_hurtbox_owner("Player")
+		await get_tree().create_timer(attack_hold).timeout
+
 	else:
 		melee_hurtbox.enable_hurtbox()
-		await get_tree().create_timer(melee_attack_hold).timeout
+		await get_tree().create_timer(attack_hold).timeout
 		melee_hurtbox.disable_hurtbox()
-	
+
 	sprite.play("idle")
 
-	await  get_tree().create_timer(1/firing_rate).timeout
+	await get_tree().create_timer(1/firing_rate).timeout
+
+func add_hurtbox_owner():
+	pass

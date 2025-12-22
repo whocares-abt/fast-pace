@@ -10,10 +10,12 @@
 script = ExtResource("1_krqjp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, 0)
 sprite_frames = ExtResource("2_6f3fa")
 animation = &"attack"
 
 [node name="AttackHurtbox" parent="." instance=ExtResource("2_k4liq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHurtbox"]
+position = Vector2(30, 0)
 shape = SubResource("RectangleShape2D_k4liq")
