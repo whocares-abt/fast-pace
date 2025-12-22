@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwuvcjn4qje8q"]
+
+[ext_resource type="Script" uid="uid://dc7u8is35aqqx" path="res://Scripts/Autoloads/combat_signal_bus.gd" id="1_ce78w"]
+
+[node name="CombatSignalBus" type="Node"]
+script = ExtResource("1_ce78w")

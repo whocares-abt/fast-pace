@@ -53,10 +53,16 @@ func rotate_pivot(direction):
 
 func ranged_attack(direction):
 	var bullet = projectile.instantiate()
+
 	add_child(bullet)
+	remove_child(bullet)
+
 	bullet.set_speed(projectile_speed)
 	bullet.set_direction(direction)
 	bullet.add_hurtbox_owners(hurtbox_owners)
+	
+	CombatSignalBus.emit_signal("bullet_shot", bullet, melee_hurtbox.global_position)
+
 	await get_tree().create_timer(attack_hold).timeout
 
 func melee_attack():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=5 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
+[ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
 
 [node name="DebugMap" type="Node2D"]
 
@@ -54,3 +55,5 @@ position = Vector2(119, 225)
 
 [node name="EnemyCharacter2" parent="Enemies" instance=ExtResource("4_6mob1")]
 position = Vector2(-543, 298)
+
+[node name="BulletManager" parent="." instance=ExtResource("4_gu212")]

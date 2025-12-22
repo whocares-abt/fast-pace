@@ -32,6 +32,10 @@ func set_direction(new_direction : Vector2):
 func set_speed(new_speed):
 	velocity *= (new_speed)/velocity.length()
 
+func set_bullet_position(new_position):
+	print(new_position)
+	set_position(new_position)
+
 func _on_environment_collider_body_entered(_body: Node2D) -> void:
 	queue_free()
 
