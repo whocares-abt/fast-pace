@@ -15,7 +15,7 @@ var projectile_speed : float
 # Melee weapons
 var attack_hold  : float
 
-var stats : WeaponStats = load("res://Resources/Combat/katana.tres")
+var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
 
 @onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
 @onready var melee_hurtbox = $WeaponPivot/AttackHurtbox
@@ -39,7 +39,7 @@ func attack(attack_direction : Vector2):
 	rotate_pivot(attack_direction)
 
 	if (ranged):
-		ranged_attack(attack_direction)
+		await ranged_attack(attack_direction)
 	else:
 		await melee_attack()
 
@@ -57,6 +57,7 @@ func ranged_attack(direction):
 	bullet.set_speed(projectile_speed)
 	bullet.set_direction(direction)
 	bullet.add_hurtbox_owners(hurtbox_owners)
+	await get_tree().create_timer(attack_hold).timeout
 
 func melee_attack():
 	melee_hurtbox.enable_hurtbox()

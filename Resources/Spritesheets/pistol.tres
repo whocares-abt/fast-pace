@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://8kbpv5bys0d"]
+
+[ext_resource type="Texture2D" uid="uid://b2p7jog6r2drf" path="res://Assets/Art/Textures/gun.png" id="1_y53jq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io3wf"]
+atlas = ExtResource("1_y53jq")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io3wf")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
