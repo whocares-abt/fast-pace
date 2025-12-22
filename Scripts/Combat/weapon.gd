@@ -15,8 +15,9 @@ var attack_hold  : float
 
 var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
 
-@onready var melee_hurtbox = $AttackHurtbox
-@onready var sprite = $AnimatedSprite2D
+@onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
+@onready var melee_hurtbox = $WeaponPivot/AttackHurtbox
+@onready var sprite = $WeaponPivot/AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,18 +32,10 @@ func _ready() -> void:
 
 func attack(attack_direction : Vector2):
 	sprite.play("attack")
-
-	# Rotate node to rotate sprite and hurtbox
-	rotation = attack_direction.angle()
+	rotate_pivot(attack_direction)
 
 	if (ranged):
-		var bullet = projectile.instantiate()
-		add_child(bullet)
-		bullet.set_speed(projectile_speed)
-		bullet.set_direction(attack_direction)
-		bullet.add_hurtbox_owner("Player")
-		await get_tree().create_timer(attack_hold).timeout
-
+		instantiate_projectile(attack_direction)
 	else:
 		melee_hurtbox.enable_hurtbox()
 		await get_tree().create_timer(attack_hold).timeout
@@ -51,6 +44,16 @@ func attack(attack_direction : Vector2):
 	sprite.play("idle")
 
 	await get_tree().create_timer(1/firing_rate).timeout
+
+func rotate_pivot(direction):
+	pivot.rotation = direction.angle()
+
+func instantiate_projectile(direction):
+	var bullet = projectile.instantiate()
+	add_child(bullet)
+	bullet.set_speed(projectile_speed)
+	bullet.set_direction(direction)
+	bullet.add_hurtbox_owner("Player")
 
 func add_hurtbox_owner():
 	pass

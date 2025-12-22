@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var hurtbox = $Hurtbox
 @onready var environment_collider = $EnvironmentCollider
+@onready var sprite = $Sprite2D
 
 @export var velocity : Vector2 = Vector2(700, 0)
 
@@ -21,8 +22,7 @@ func set_velocity(new_velocity):
 func set_direction(new_direction : Vector2):
 	assert(new_direction.x != 0 or new_direction.y != 0)
 	velocity = velocity.length() * (new_direction.normalized())
-	print(new_direction)
-	print(velocity)
+	rotation = new_direction.angle()
 
 func set_speed(new_speed):
 	velocity *= (new_speed)/velocity.length()
