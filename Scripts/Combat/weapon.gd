@@ -6,6 +6,7 @@ var projectile = preload("res://Scenes/Combat/bullet.tscn")
 
 # Both ranged and melee weapons
 var firing_rate : float
+var can_attack : bool = true
 
 # Ranged weapons
 var projectile_speed : float
@@ -13,7 +14,7 @@ var projectile_speed : float
 # Melee weapons
 var attack_hold  : float
 
-var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
+var stats : WeaponStats = load("res://Resources/Combat/katana.tres")
 
 @onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
 @onready var melee_hurtbox = $WeaponPivot/AttackHurtbox
@@ -31,29 +32,36 @@ func _ready() -> void:
 	melee_hurtbox.disable_hurtbox()
 
 func attack(attack_direction : Vector2):
+	if (not can_attack):
+		return
+	can_attack = false
 	sprite.play("attack")
 	rotate_pivot(attack_direction)
 
 	if (ranged):
-		instantiate_projectile(attack_direction)
+		ranged_attack(attack_direction)
 	else:
-		melee_hurtbox.enable_hurtbox()
-		await get_tree().create_timer(attack_hold).timeout
-		melee_hurtbox.disable_hurtbox()
+		await melee_attack()
 
 	sprite.play("idle")
 
 	await get_tree().create_timer(1/firing_rate).timeout
+	can_attack = true
 
 func rotate_pivot(direction):
 	pivot.rotation = direction.angle()
 
-func instantiate_projectile(direction):
+func ranged_attack(direction):
 	var bullet = projectile.instantiate()
 	add_child(bullet)
 	bullet.set_speed(projectile_speed)
 	bullet.set_direction(direction)
 	bullet.add_hurtbox_owner("Player")
+
+func melee_attack():
+	melee_hurtbox.enable_hurtbox()
+	await get_tree().create_timer(attack_hold).timeout
+	melee_hurtbox.disable_hurtbox()
 
 func add_hurtbox_owner():
 	pass
