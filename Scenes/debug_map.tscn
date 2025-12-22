@@ -1,25 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=4 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
-[ext_resource type="PackedScene" uid="uid://bfqk0r7mpuyuo" path="res://Scenes/Combat/bullet.tscn" id="2_o67dp"]
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
-position = Vector2(-55, 47)
+position = Vector2(431, 43)
+SPEED = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 
-[node name="Wall" parent="." instance=ExtResource("2_jcsea")]
-position = Vector2(2, 50)
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Wall2" parent="." instance=ExtResource("2_jcsea")]
-position = Vector2(-37, 87)
+[node name="Wall" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-151.00003, -259)
+scale = Vector2(30, 1)
 
-[node name="Bullet" parent="." instance=ExtResource("2_o67dp")]
-position = Vector2(-178, 90)
+[node name="Wall4" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-141.00002, 362)
+scale = Vector2(30, 1)
 
-[node name="EnemyCharacter" parent="." instance=ExtResource("4_6mob1")]
-position = Vector2(-189, 56)
+[node name="Wall2" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-612, 50)
+scale = Vector2(1, 20)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-612, 50)
+scale = Vector2(1, 20)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-113, 125)
+scale = Vector2(1, 15)
+
+[node name="Wall6" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(314, -24)
+scale = Vector2(1, 15)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyCharacter" parent="Enemies" instance=ExtResource("4_6mob1")]
+position = Vector2(-180, 275)
+
+[node name="EnemyCharacter3" parent="Enemies" instance=ExtResource("4_6mob1")]
+position = Vector2(-338, 11)
+
+[node name="EnemyCharacter4" parent="Enemies" instance=ExtResource("4_6mob1")]
+position = Vector2(98, -61)
+
+[node name="EnemyCharacter5" parent="Enemies" instance=ExtResource("4_6mob1")]
+position = Vector2(119, 225)
+
+[node name="EnemyCharacter2" parent="Enemies" instance=ExtResource("4_6mob1")]
+position = Vector2(-543, 298)

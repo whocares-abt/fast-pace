@@ -3,6 +3,7 @@ extends Node2D
 @onready var hurtbox = $Hurtbox
 @onready var environment_collider = $EnvironmentCollider
 @onready var sprite = $Sprite2D
+@onready var particles = $GPUParticles2D
 
 @export var velocity : Vector2 = Vector2(700, 0)
 
@@ -10,6 +11,10 @@ extends Node2D
 
 func add_hurtbox_owners(new_owners):
 	hurtbox.add_hurtbox_owners(new_owners)
+
+func _ready() -> void:
+	await get_tree().create_timer(0.05).timeout
+	#enable_particles()
 
 func _process(delta: float) -> void:
 	position += (velocity*delta)
@@ -29,3 +34,6 @@ func set_speed(new_speed):
 
 func _on_environment_collider_body_entered(_body: Node2D) -> void:
 	queue_free()
+
+func enable_particles():
+	particles.emitting = true

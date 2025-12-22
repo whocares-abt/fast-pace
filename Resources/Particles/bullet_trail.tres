@@ -1,0 +1,10 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bxjpnuylm11oo"]
+
+[resource]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-7, 0, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 1.0
+gravity = Vector3(-100, 0, 0)
+color = Color(0.8868507, 0.7082753, 0, 1)
