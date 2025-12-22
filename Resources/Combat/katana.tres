@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_5yd16")
 weapon_name = "katana"
-firing_rate = 4.0
+firing_rate = 500.0
 attack_hold = 0.1
 metadata/_custom_type_script = "uid://dqsfxyh6jojdx"

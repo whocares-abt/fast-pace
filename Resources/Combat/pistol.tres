@@ -6,7 +6,7 @@
 script = ExtResource("2_cu7dr")
 ranged = true
 weapon_name = "pistol"
-firing_rate = 0.5
+firing_rate = 100.0
 attack_hold = 0.1
-projectile_speed = 700.0
+projectile_speed = 1500.0
 metadata/_custom_type_script = "uid://dqsfxyh6jojdx"

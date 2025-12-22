@@ -65,6 +65,6 @@ func melee_attack():
 	melee_hurtbox.disable_hurtbox()
 
 func add_hurtbox_owners(new_owners):
-	for owner in new_owners:
-		hurtbox_owners.append(owner)
+	for new_owner in new_owners:
+		hurtbox_owners.append(new_owner)
 	melee_hurtbox.add_hurtbox_owners(new_owners)
