@@ -7,6 +7,7 @@ var projectile = preload("res://Scenes/Combat/bullet.tscn")
 # Both ranged and melee weapons
 var firing_rate : float
 var can_attack : bool = true
+var hurtbox_owners = []
 
 # Ranged weapons
 var projectile_speed : float
@@ -28,7 +29,6 @@ func _ready() -> void:
 	projectile_speed = stats.projectile_speed
 	attack_hold = stats.attack_hold
 	
-	melee_hurtbox.add_hurtbox_owner("Player")
 	melee_hurtbox.disable_hurtbox()
 
 func attack(attack_direction : Vector2):
@@ -56,12 +56,14 @@ func ranged_attack(direction):
 	add_child(bullet)
 	bullet.set_speed(projectile_speed)
 	bullet.set_direction(direction)
-	bullet.add_hurtbox_owner("Player")
+	bullet.add_hurtbox_owners(hurtbox_owners)
 
 func melee_attack():
 	melee_hurtbox.enable_hurtbox()
 	await get_tree().create_timer(attack_hold).timeout
 	melee_hurtbox.disable_hurtbox()
 
-func add_hurtbox_owner():
-	pass
+func add_hurtbox_owners(new_owners):
+	for owner in new_owners:
+		hurtbox_owners.append(owner)
+	melee_hurtbox.add_hurtbox_owners(new_owners)

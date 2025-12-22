@@ -8,8 +8,8 @@ extends Node2D
 
 @export var map_edge = 1500
 
-func add_hurtbox_owner(new_owner):
-	hurtbox.add_hurtbox_owner(new_owner)
+func add_hurtbox_owners(new_owners):
+	hurtbox.add_hurtbox_owners(new_owners)
 
 func _process(delta: float) -> void:
 	position += (velocity*delta)
