@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://uriwqjsj2l17"]
+[gd_scene load_steps=9 format=3 uid="uid://uriwqjsj2l17"]
 
 [ext_resource type="Texture2D" uid="uid://bkgx3t4wcwml7" path="res://Assets/Art/SpriteSheets/Enemy.png" id="1_kjxs3"]
 [ext_resource type="Script" uid="uid://rgjg7yqphkf0" path="res://Scripts/Characters/enemy_character.gd" id="1_nraa5"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_sdh2x"]
+[ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="4_najb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nraa5"]
 atlas = ExtResource("1_kjxs3")
@@ -10,6 +11,14 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sdh2x"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nraa5")
@@ -26,17 +35,27 @@ radius = 16.03122
 radius = 17.0
 
 [node name="EnemyCharacter" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_nraa5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdh2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_nraa5")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_sdh2x")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_sdh2x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 0.3
+one_shot = true
+process_material = ExtResource("4_najb4")
 
 [connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]
