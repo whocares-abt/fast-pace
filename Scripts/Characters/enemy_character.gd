@@ -15,9 +15,10 @@ func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Player" in area.hurtbox_owners):
 		animation_sprite.play("dead")
 		particle.emitting = true
-		disable_enemy()
+		disable_enemy.call_deferred()
 
 func disable_enemy():
 	collision_body.disabled = true
 	hitbox.monitorable = false
 	hitbox.monitoring = false
+	

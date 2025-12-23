@@ -32,7 +32,7 @@ animations = [{
 radius = 16.03122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdh2x"]
-radius = 17.0
+radius = 21.023796
 
 [node name="EnemyCharacter" type="CharacterBody2D"]
 motion_mode = 1
@@ -42,11 +42,9 @@ script = ExtResource("1_nraa5")
 sprite_frames = SubResource("SpriteFrames_sdh2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_nraa5")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_sdh2x")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_sdh2x")
@@ -54,7 +52,7 @@ shape = SubResource("CircleShape2D_sdh2x")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 1000
-lifetime = 0.3
+lifetime = 0.15000000000000002
 one_shot = true
 process_material = ExtResource("4_najb4")
 
