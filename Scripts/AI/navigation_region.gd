@@ -18,5 +18,3 @@ func cut_polygon_from_mesh(polygon : Polygon2D, polygon_transform):
 	
 	if (get_child_count() == 6):
 		bake_navigation_polygon()
-
-	print(get_child_count())

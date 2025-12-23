@@ -54,11 +54,11 @@ attack={
 
 [layer_names]
 
-2d_physics/layer_1="Physics/Environment"
+2d_physics/layer_1="Player/Environment"
 2d_navigation/layer_1="Enemy"
 2d_physics/layer_2="Hitbox/Hurtboxes"
-2d_physics/layer_3="Interactable"
-2d_physics/layer_4="Walls/Environment (for destroying objects on wall collision)"
+2d_physics/layer_3="Enemy/Environment"
+2d_physics/layer_4="Destroyable objects like bullets/Environment"
 
 [rendering]
 

@@ -36,6 +36,7 @@ func disable_enemy():
 	collision_body.disabled = true
 	hitbox.monitorable = false
 	hitbox.monitoring = false
+	nav_comp.set_goal(null)
 	
 	# To prevent blood splashes from disappearing
 	await get_tree().create_timer(particle.lifetime).timeout

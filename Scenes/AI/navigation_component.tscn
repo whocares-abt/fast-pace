@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://nn5qjqphbj5d" path="res://Scripts/AI/navigation_component.gd" id="1_ofku4"]
 
 [node name="NavigationComponent" type="NavigationAgent2D"]
-debug_enabled = true
 script = ExtResource("1_ofku4")
+time = 0.3
 
 [node name="NavTimer" type="Timer" parent="."]
 autostart = true

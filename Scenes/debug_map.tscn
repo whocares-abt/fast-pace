@@ -50,20 +50,25 @@ scale = Vector2(1, 15)
 position = Vector2(-180, 275)
 goal = NodePath("../../PlayerCharacter")
 
-[node name="EnemyCharacter3" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(-338, 11)
+goal = NodePath("../../PlayerCharacter")
 
-[node name="EnemyCharacter4" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(98, -61)
+goal = NodePath("../../PlayerCharacter")
 
-[node name="EnemyCharacter5" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(119, 225)
+goal = NodePath("../../PlayerCharacter")
 
-[node name="EnemyCharacter2" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(-543, 298)
+goal = NodePath("../../PlayerCharacter")
 
-[node name="EnemyCharacter6" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(-80, 320)
+goal = NodePath("../../PlayerCharacter")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 

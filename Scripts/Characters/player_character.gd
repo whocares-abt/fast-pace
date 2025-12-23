@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	weapon.add_hurtbox_owners(["Player"])
+	weapon.equip_weapon("pistol")
 
 func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("attack")):
