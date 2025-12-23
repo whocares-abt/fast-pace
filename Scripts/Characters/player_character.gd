@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 		
 	if (event.is_action_pressed("ability")):
 		var mana_cost = knife_throw.get_mana_cost()
-		knife_throw.activate.call()
+		knife_throw.activate.call(attack_direction, weapon.get_hurtbox_location())
 		update_health(-mana_cost)
 		
 	if (event.is_action_pressed("bullet_time")):

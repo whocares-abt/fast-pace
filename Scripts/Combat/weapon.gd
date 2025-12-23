@@ -93,6 +93,9 @@ func melee_attack():
 	await get_tree().create_timer(attack_hold).timeout
 	melee_hurtbox.disable_hurtbox()
 
+func get_hurtbox_location():
+	return melee_hurtbox.global_position
+
 func add_hurtbox_owners(new_owners):
 	for new_owner in new_owners:
 		hurtbox_owners.append(new_owner)
