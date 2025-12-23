@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 		weapon.attack(attack_direction.normalized())
 		
 	if (event.is_action_pressed("ability")):
+		# TODO: Should we decouple this code? Can it even be decoupled?
 		if (knife_throw.can_activate):
 			var mana_cost = knife_throw.get_mana_cost()
 			knife_throw.activate.call(attack_direction, weapon.get_hurtbox_location())
