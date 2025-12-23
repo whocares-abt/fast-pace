@@ -15,7 +15,17 @@ var projectile_speed : float
 # Melee weapons
 var attack_hold  : float
 
-var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
+var stats
+
+var weapon_stat_map = {
+	"pistol" : "res://Resources/Combat/pistol.tres",
+	"katana" : "res://Resources/Combat/katana.tres",
+}
+
+var sprite_frame_map = {
+	"pistol" : "res://Resources/Spriteframes/katana.tres",
+	"katana" : "res://Resources/Spriteframes/katana.tres",
+}
 
 @onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
 @onready var melee_hurtbox = $WeaponPivot/AttackHurtbox
@@ -23,13 +33,25 @@ var stats : WeaponStats = load("res://Resources/Combat/pistol.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	equip_weapon("katana")
+	melee_hurtbox.disable_hurtbox()
+
+func update_stats():
 	ranged = stats.ranged
 	weapon_name = stats.weapon_name
 	firing_rate = stats.firing_rate
 	projectile_speed = stats.projectile_speed
 	attack_hold = stats.attack_hold
+
+func equip_weapon(weapon_name):
+	# Loads weapon stats from filename
+	var stat_file_name = weapon_stat_map[weapon_name]
+	stats = load(stat_file_name)
 	
-	melee_hurtbox.disable_hurtbox()
+	var sprite_file_name = sprite_frame_map[weapon_name]
+	sprite.sprite_frames = load(sprite_file_name)
+	
+	update_stats()
 
 func attack(attack_direction : Vector2):
 	if (not can_attack):
