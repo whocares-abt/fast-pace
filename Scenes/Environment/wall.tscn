@@ -22,3 +22,4 @@ shape = SubResource("RectangleShape2D_3l8k3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_l8g5h")
+metadata/Comment = "Used for colliding with particles"

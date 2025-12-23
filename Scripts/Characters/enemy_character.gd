@@ -22,3 +22,11 @@ func disable_enemy():
 	hitbox.monitorable = false
 	hitbox.monitoring = false
 	
+	# To prevent blood splashes from disappearing
+	await get_tree().create_timer(particle.lifetime).timeout
+	pause_particle_process()
+
+
+func pause_particle_process():
+	# To prevent particles from despawning - blood splatters stay
+	particle.process_mode = Node.PROCESS_MODE_DISABLED
