@@ -6,6 +6,7 @@ var stats : AbilityStats
 var ability_name
 var mana_cost
 var cooldown
+var can_activate : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
