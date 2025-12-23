@@ -43,12 +43,13 @@ func update_stats():
 	projectile_speed = stats.projectile_speed
 	attack_hold = stats.attack_hold
 
-func equip_weapon(weapon_name):
+func equip_weapon(new_weapon_name):
 	# Loads weapon stats from filename
-	var stat_file_name = weapon_stat_map[weapon_name]
+	
+	var stat_file_name = weapon_stat_map[new_weapon_name]
 	stats = load(stat_file_name)
 	
-	var sprite_file_name = sprite_frame_map[weapon_name]
+	var sprite_file_name = sprite_frame_map[new_weapon_name]
 	sprite.sprite_frames = load(sprite_file_name)
 	
 	update_stats()

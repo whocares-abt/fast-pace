@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://u2sytbk4b1vf"]
+
+[node name="NavigationComponent" type="Node2D"]
