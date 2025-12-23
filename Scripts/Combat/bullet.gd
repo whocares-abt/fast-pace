@@ -9,6 +9,11 @@ extends Node2D
 
 @export var map_edge = 1500
 
+var sprite_map = {
+	"bullet" : "res://Assets/Art/Textures/Combat/bullet.png",
+	"knife" : "res://Assets/Art/Textures/Combat/knife.png",
+}
+
 func add_hurtbox_owners(new_owners):
 	hurtbox.add_hurtbox_owners(new_owners)
 
@@ -20,6 +25,16 @@ func _process(delta: float) -> void:
 	position += (velocity*delta)
 	if (abs(position.x) > map_edge || abs(position.y) > map_edge):
 		queue_free()
+
+func change_sprite(new_sprite):
+	var sprite_file = sprite_map[new_sprite]
+	sprite.texture = load(sprite_file)
+	
+	# Remove trail for knife
+	if (new_sprite == "knife"):
+		particles.amount_ratio = 0
+
+# Changing velocity
 
 func set_velocity(new_velocity):
 	velocity = new_velocity

@@ -4,7 +4,9 @@ extends CharacterBody2D
 @export var max_health = 12
 var health = 1
 
-@onready var weapon = $Weapon
+@onready var weapon = $CombatAbilities/Weapon
+@onready var knife_throw = $CombatAbilities/KnifeThrow
+@onready var bullet_time = $CombatAbilities/BulletTime
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -19,7 +21,7 @@ var input_disabled_cause = ""
 
 func _ready() -> void:
 	weapon.add_hurtbox_owners(["Player"])
-	weapon.equip_weapon("pistol")
+	weapon.equip_weapon("katana")
 	
 	health = max_health
 	
@@ -29,11 +31,17 @@ func _input(event: InputEvent) -> void:
 	if (input_disabled):
 		return
 	
-	if (event.is_action_pressed("attack")):
-		var mouse_pos = get_global_mouse_position()
-		var attack_direction = mouse_pos - position
+	var mouse_pos = get_global_mouse_position()
+	var attack_direction = mouse_pos - position
 
+	if (event.is_action_pressed("attack")):
 		weapon.attack(attack_direction.normalized())
+		
+	if (event.is_action_pressed("ability")):
+		pass
+		
+	if (event.is_action_pressed("bullet_time")):
+		bullet_time.activate()
 
 func _physics_process(_delta: float) -> void:
 	if (input_disabled):

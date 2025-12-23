@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AbilityStats" load_steps=2 format=3 uid="uid://s8fw2p7iqhan"]
+
+[ext_resource type="Script" uid="uid://b6ya08u30074w" path="res://Scripts/Resources/Combat/ability_stats.gd" id="1_yjc4c"]
+
+[resource]
+script = ExtResource("1_yjc4c")
+ability_name = "Bullet Time"
+metadata/_custom_type_script = "uid://b6ya08u30074w"

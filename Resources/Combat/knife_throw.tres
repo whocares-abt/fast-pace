@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityStats" load_steps=2 format=3 uid="uid://dbro4a1s81523"]
+
+[ext_resource type="Script" uid="uid://b6ya08u30074w" path="res://Scripts/Resources/Combat/ability_stats.gd" id="1_i8brn"]
+
+[resource]
+script = ExtResource("1_i8brn")
+ability_name = "Knife Throw"
+mana_cost = 2.0
+cooldown = 2.0
+metadata/_custom_type_script = "uid://b6ya08u30074w"

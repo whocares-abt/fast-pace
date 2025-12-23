@@ -15,7 +15,7 @@ var projectile_speed : float
 # Melee weapons
 var attack_hold  : float
 
-var stats
+var stats : WeaponStats
 
 var weapon_stat_map = {
 	"pistol" : "res://Resources/Combat/pistol.tres",
