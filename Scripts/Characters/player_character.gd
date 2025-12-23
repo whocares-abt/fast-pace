@@ -1,21 +1,37 @@
 extends CharacterBody2D
 
 @export var SPEED = 300.0
+@export var max_health = 12
+var health = 1
 
 @onready var weapon = $Weapon
+@onready var sprite = $AnimatedSprite2D
+@onready var health_timer = $HealthTimer
+
+var input_disabled = false
+var input_disabled_cause = ""
 
 func _ready() -> void:
 	weapon.add_hurtbox_owners(["Player"])
 	weapon.equip_weapon("pistol")
+	
+	health = max_health
+	
+	CombatSignalBus.connect("enemy_died", on_enemy_death)
 
 func _input(event: InputEvent) -> void:
+	if (input_disabled):
+		return
+	
 	if (event.is_action_pressed("attack")):
 		var mouse_pos = get_global_mouse_position()
-		var mouse_to_player = mouse_pos - position
+		var attack_direction = mouse_pos - position
 
-		weapon.attack(mouse_to_player.normalized())
+		weapon.attack(attack_direction.normalized())
 
 func _physics_process(_delta: float) -> void:
+	if (input_disabled):
+		return
 
 	var direction_x = Input.get_axis("move_left", "move_right")
 	var direction_y = Input.get_axis("move_up", "move_down")
@@ -35,3 +51,20 @@ func _physics_process(_delta: float) -> void:
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Enemy" in area.hurtbox_owners):
 		self.queue_free()
+
+func _on_health_timer_timeout() -> void:
+	update_health(-1)
+
+func on_enemy_death():
+	update_health(3)
+
+func update_health(delta):
+	health = min(health + delta, max_health)
+	CombatSignalBus.emit_signal("player_health_updated", health, max_health)
+	if (health <= 0):
+		disable_player()
+		
+func disable_player():
+	input_disabled = true
+	input_disabled_cause = "death"
+	CombatSignalBus.emit_signal("player_died")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dn8al0fnhfbkn" path="res://Scripts/Combat/bullet.gd" id="1_h4bvn"]
 [ext_resource type="PackedScene" uid="uid://c6yca5h55hus" path="res://Scenes/Combat/hurtbox.tscn" id="2_2qxdl"]
-[ext_resource type="Texture2D" uid="uid://x31o6ma1jwj7" path="res://Assets/Art/Textures/bullet.png" id="3_2qxdl"]
+[ext_resource type="Texture2D" uid="uid://x31o6ma1jwj7" path="res://Assets/Art/Textures/Combat/bullet.png" id="3_2qxdl"]
 [ext_resource type="Material" uid="uid://bxjpnuylm11oo" path="res://Resources/Particles/bullet_trail.tres" id="4_3m52h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3m52h"]

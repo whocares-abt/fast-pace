@@ -23,7 +23,7 @@ var weapon_stat_map = {
 }
 
 var sprite_frame_map = {
-	"pistol" : "res://Resources/Spriteframes/katana.tres",
+	"pistol" : "res://Resources/Spriteframes/pistol.tres",
 	"katana" : "res://Resources/Spriteframes/katana.tres",
 }
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsi6peaxa3a52"
-path="res://.godot/imported/katana.png-fab9a28233c171433260c2993b82cac0.ctex"
+uid="uid://b2p7jog6r2drf"
+path="res://.godot/imported/gun.png-d79e9778fa571335f4b59674926ccfcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Textures/katana.png"
-dest_files=["res://.godot/imported/katana.png-fab9a28233c171433260c2993b82cac0.ctex"]
+source_file="res://Assets/Art/Textures/Combat/gun.png"
+dest_files=["res://.godot/imported/gun.png-d79e9778fa571335f4b59674926ccfcf.ctex"]
 
 [params]
 

@@ -5,9 +5,6 @@ extends Resource
 @export var weapon_name : String
 var projectile : Node2D # Projectile being shot by gun
 
-# How to parse a texture into an animatedSprite2D?
-# @export var texture : Texture2D
-
 # Stats for both ranged and melee weapons
 @export var firing_rate : float
 #@export var damage : float

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0n24g1ee514k"
-path="res://.godot/imported/Wall.png-2226812f95b55ad35e6ac75493edd6da.ctex"
+uid="uid://csgdbangehwth"
+path="res://.godot/imported/healthbarProgress.png-c456f40122b399f830a7348add0c7a33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/SpriteSheets/Wall.png"
-dest_files=["res://.godot/imported/Wall.png-2226812f95b55ad35e6ac75493edd6da.ctex"]
+source_file="res://Assets/Art/Textures/UI/healthbarProgress.png"
+dest_files=["res://.godot/imported/healthbarProgress.png-c456f40122b399f830a7348add0c7a33.ctex"]
 
 [params]
 

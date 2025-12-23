@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=9 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 [ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
 [ext_resource type="PackedScene" uid="uid://cwav53n6w8kp3" path="res://Scenes/AI/navigation_region.tscn" id="5_gu212"]
+[ext_resource type="PackedScene" uid="uid://dm4gkq86dil4c" path="res://Scenes/UI/game_ui.tscn" id="7_gnyyd"]
+[ext_resource type="Script" uid="uid://bhgtcghfpf7w4" path="res://Scripts/UI/game_ui.gd" id="8_1on00"]
 
 [node name="DebugMap" type="Node2D"]
 
@@ -72,4 +74,7 @@ goal = NodePath("../../PlayerCharacter")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("7_gnyyd")]
+script = ExtResource("8_1on00")

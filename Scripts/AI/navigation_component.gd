@@ -8,11 +8,12 @@ var goal : Node2D
 
 func set_goal(new_goal):
 	goal = new_goal
+	nav_timer.start(time)
 
 func _on_nav_timer_timeout() -> void:
 	if (goal == null):
+		nav_timer.stop()
 		return
 	
 	if (target_position - goal.global_position).length() > path_recalc_threshold:
 		target_position = goal.global_position
-	nav_timer.start(time)
