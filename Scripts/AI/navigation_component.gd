@@ -16,6 +16,3 @@ func _on_nav_timer_timeout() -> void:
 	if (target_position - goal.global_position).length() > path_recalc_threshold:
 		target_position = goal.global_position
 	nav_timer.start(time)
-
-	if (not is_target_reachable()):
-		print("ASDSA")

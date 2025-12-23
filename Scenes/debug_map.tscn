@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=7 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
+[ext_resource type="NavigationPolygon" uid="uid://bs5dweb3g7xgm" path="res://Resources/NavPoly/debug_map.tres" id="3_frd8m"]
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 [ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_6mob1"]
-vertices = PackedVector2Array(531.1797, -338.07813, 637.64844, 494.1328, -756.64844, 510.8672, -727.34375, -349.89844)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+[ext_resource type="PackedScene" uid="uid://cwav53n6w8kp3" path="res://Scenes/AI/navigation_region.tscn" id="5_gu212"]
 
 [node name="DebugMap" type="Node2D"]
 
@@ -17,27 +15,30 @@ SPEED = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 
+[node name="NavigationRegion" parent="." instance=ExtResource("5_gu212")]
+navigation_polygon = ExtResource("3_frd8m")
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource("2_jcsea")]
 position = Vector2(-151.00003, -259)
 scale = Vector2(30, 1)
 
-[node name="Wall4" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-141.00002, 362)
-scale = Vector2(30, 1)
-
 [node name="Wall2" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-612, 50)
-scale = Vector2(1, 20)
-
-[node name="Wall5" parent="Walls" instance=ExtResource("2_jcsea")]
 position = Vector2(-612, 50)
 scale = Vector2(1, 20)
 
 [node name="Wall3" parent="Walls" instance=ExtResource("2_jcsea")]
 position = Vector2(-113, 125)
 scale = Vector2(1, 15)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-141.00002, 362)
+scale = Vector2(30, 1)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-612, 50)
+scale = Vector2(1, 20)
 
 [node name="Wall6" parent="Walls" instance=ExtResource("2_jcsea")]
 position = Vector2(314, -24)
@@ -67,6 +68,3 @@ position = Vector2(-80, 320)
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_6mob1")
