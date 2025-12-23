@@ -5,7 +5,13 @@ extends CharacterBody2D
 var health = 1
 
 @onready var weapon = $Weapon
+
 @onready var sprite = $AnimatedSprite2D
+
+@onready var collider = $CollisionShape2D
+@onready var hitbox = $Hitbox
+
+@onready var particle = $GPUParticles2D
 @onready var health_timer = $HealthTimer
 
 var input_disabled = false
@@ -62,9 +68,25 @@ func update_health(delta):
 	health = min(health + delta, max_health)
 	CombatSignalBus.emit_signal("player_health_updated", health, max_health)
 	if (health <= 0):
-		disable_player()
+		disable_player.call_deferred()
 		
 func disable_player():
 	input_disabled = true
 	input_disabled_cause = "death"
+	
+	sprite.play("death")
+	collider.disabled = true
+	hitbox.monitoring = false
+	hitbox.monitorable = false
+	
+	particle.emitting = true
+	
 	CombatSignalBus.emit_signal("player_died")
+	
+	# To prevent blood splashes from disappearing
+	await get_tree().create_timer(particle.lifetime).timeout
+	pause_particle_process()
+
+func pause_particle_process():
+	# To prevent particles from despawning - blood splatters stay
+	particle.process_mode = Node.PROCESS_MODE_DISABLED

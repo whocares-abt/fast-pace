@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://rgjg7yqphkf0" path="res://Scripts/Characters/enemy_character.gd" id="1_nraa5"]
 [ext_resource type="PackedScene" uid="uid://u2sytbk4b1vf" path="res://Scenes/AI/navigation_component.tscn" id="2_f31sj"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_sdh2x"]
-[ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="4_najb4"]
+[ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/enemy_blood_splatter.tres" id="4_najb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nraa5"]
 atlas = ExtResource("1_kjxs3")

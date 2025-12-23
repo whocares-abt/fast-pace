@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfeafjqb4thpf"]
+[gd_scene load_steps=10 format=3 uid="uid://cfeafjqb4thpf"]
 
 [ext_resource type="Script" uid="uid://dxgq4xe00pby6" path="res://Scripts/Characters/player_character.gd" id="1_l560e"]
 [ext_resource type="PackedScene" uid="uid://nbsjmjd7do3s" path="res://Scenes/Combat/weapon.tscn" id="2_3pywu"]
 [ext_resource type="Texture2D" uid="uid://blfonbnnkwt7m" path="res://Assets/Art/Textures/Characters/Player.png" id="2_c2rcm"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_i26gt"]
+[ext_resource type="Material" uid="uid://ijfsf3vcuj55" path="res://Resources/Particles/player_blood_splatter.tres" id="5_tj02q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oigcr"]
 radius = 16.03122
@@ -14,6 +15,14 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oigcr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i26gt")
@@ -41,6 +50,13 @@ sprite_frames = SubResource("SpriteFrames_oigcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_3pywu")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 0.3
+one_shot = true
+process_material = ExtResource("5_tj02q")
 
 [node name="HealthTimer" type="Timer" parent="."]
 wait_time = 0.5
