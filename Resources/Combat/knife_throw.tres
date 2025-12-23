@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_i8brn")
 ability_name = "Knife Throw"
-mana_cost = 2.0
+mana_cost = 1.0
 cooldown = 2.0
 metadata/_custom_type_script = "uid://b6ya08u30074w"

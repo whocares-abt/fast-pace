@@ -38,10 +38,14 @@ func _input(event: InputEvent) -> void:
 		weapon.attack(attack_direction.normalized())
 		
 	if (event.is_action_pressed("ability")):
-		pass
+		var mana_cost = knife_throw.get_mana_cost()
+		knife_throw.activate.call()
+		update_health(-mana_cost)
 		
 	if (event.is_action_pressed("bullet_time")):
-		bullet_time.activate()
+		var mana_cost = bullet_time.get_mana_cost()
+		bullet_time.activate.call()
+		update_health(-mana_cost)
 
 func _physics_process(_delta: float) -> void:
 	if (input_disabled):

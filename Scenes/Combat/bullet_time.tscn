@@ -4,3 +4,4 @@
 
 [node name="BulletTime" type="Node2D"]
 script = ExtResource("1_k33ro")
+metadata/_custom_type_script = "uid://dktpdc54ckhwf"
