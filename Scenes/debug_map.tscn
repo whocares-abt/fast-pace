@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=6 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 [ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6mob1"]
+vertices = PackedVector2Array(531.1797, -338.07813, 637.64844, 494.1328, -756.64844, 510.8672, -727.34375, -349.89844)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 
 [node name="DebugMap" type="Node2D"]
 
@@ -41,8 +45,9 @@ scale = Vector2(1, 15)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyCharacter" parent="Enemies" instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(-180, 275)
+goal = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter3" parent="Enemies" instance=ExtResource("4_6mob1")]
 position = Vector2(-338, 11)
@@ -62,3 +67,6 @@ position = Vector2(-80, 320)
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6mob1")
