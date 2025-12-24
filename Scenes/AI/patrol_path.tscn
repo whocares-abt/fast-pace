@@ -5,3 +5,5 @@
 [node name="PatrolPath" type="Path2D"]
 scale = Vector2(0.9503747, 0.9503747)
 script = ExtResource("1_cptgr")
+
+[node name="PatrolStart" type="Node2D" parent="."]

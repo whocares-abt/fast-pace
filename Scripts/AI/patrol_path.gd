@@ -3,7 +3,7 @@ extends Path2D
 var path_follow_dict : Dictionary[PathFollow2D, float]
 # Maps pathfollow2D to patrol speed
 
-@export var patrol_start : Vector2
+@onready var patrol_start = $PatrolStart
 
 func _ready() -> void:
 	update_patrol_start()
@@ -30,12 +30,12 @@ func remove_patrol_path(patrol_path : PathFollow2D):
 	# Remove patrol path if they have no child
 	remove_child(patrol_path)
 
-func get_start_point():
+func get_start_node():
 	return patrol_start
 
 func update_patrol_start():
 	if (curve == null):
 		printerr("No patrol path")
 		return
-		
-	patrol_start = curve.get_closest_point(Vector2.ZERO)
+
+	patrol_start.position = curve.get_closest_point(Vector2.ZERO)

@@ -29,6 +29,7 @@ position = Vector2(431, 43)
 SPEED = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+zoom = Vector2(0.5, 0.5)
 
 [node name="NavigationRegion" parent="." instance=ExtResource("5_gu212")]
 visible = false
@@ -60,32 +61,6 @@ scale = Vector2(1, 20)
 position = Vector2(314, -24)
 scale = Vector2(1, 15)
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(-180, 275)
-goal = NodePath("../../PlayerCharacter")
-
-[node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(-338, 11)
-goal = NodePath("../../PlayerCharacter")
-
-[node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(98, -61)
-goal = NodePath("../../PlayerCharacter")
-
-[node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(119, 225)
-goal = NodePath("../../PlayerCharacter")
-
-[node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(-543, 298)
-goal = NodePath("../../PlayerCharacter")
-
-[node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
-position = Vector2(-80, 320)
-goal = NodePath("../../PlayerCharacter")
-
 [node name="PatrolPaths" type="Node2D" parent="."]
 
 [node name="PatrolPath" parent="PatrolPaths" instance=ExtResource("6_60603")]
@@ -93,6 +68,33 @@ curve = SubResource("Curve2D_60603")
 
 [node name="PatrolPath2" parent="PatrolPaths" instance=ExtResource("6_60603")]
 curve = SubResource("Curve2D_ctkch")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
+position = Vector2(-363, 95)
+player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath2")
+
+[node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(-543, 298)
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(-338, 11)
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(98, -61)
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(119, 225)
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(-80, 320)
+player = NodePath("../../PlayerCharacter")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
