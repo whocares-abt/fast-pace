@@ -12,13 +12,19 @@ extends CharacterBody2D
 
 @export var goal : Node2D
 
-var current_state
-
 enum EnemyState {
 	PATROL, # Enemy patrols particular path
 	AGGRO, # Enemy chases player
-	RETURN_TO_PATROL
+	RETURN_TO_PATROL # Enemy returns to patrol after deaggro
 }
+
+var current_state : EnemyState
+
+func get_current_state():
+	return current_state
+
+func set_current_state(new_state):
+	current_state = new_state
 
 
 func _ready() -> void:
@@ -31,16 +37,20 @@ func update_nav_goal(new_goal):
 func _physics_process(_delta: float) -> void:	
 	match current_state:
 		EnemyState.AGGRO:
-			if (not nav_comp.is_target_reachable()):
-				current_state = EnemyState.PATROL
-				
-			if (not nav_comp.is_target_reached()):
-				nav_to_goal()
+			aggro_behaviour()
 
 		EnemyState.PATROL:
 			pass
 
 	move_and_slide()
+
+func aggro_behaviour():
+	if (not nav_comp.is_target_reachable()):
+		set_current_state(EnemyState.PATROL)
+		
+	if (not nav_comp.is_target_reached()):
+		nav_to_goal()
+
 
 func nav_to_goal():
 	var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized()
