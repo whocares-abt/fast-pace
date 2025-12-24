@@ -16,11 +16,14 @@ func _process(delta: float) -> void:
 
 func add_new_patroller(node : Node2D, patrol_speed : float):
 	var new_path_follow = create_new_path_follow(patrol_speed)
+	
 	node.transform = new_path_follow.transform
+	
 	node.reparent(new_path_follow)
 
 func create_new_path_follow(patrol_speed : float):
 	var path_follow = PathFollow2D.new()
+	
 	add_child(path_follow)
 	
 	path_follow_dict[path_follow] = patrol_speed
@@ -31,11 +34,12 @@ func remove_patrol_path(patrol_path : PathFollow2D):
 	remove_child(patrol_path)
 
 func get_start_node():
+	update_patrol_start()
 	return patrol_start
 
 func update_patrol_start():
 	if (curve == null):
 		printerr("No patrol path")
-		return
+		return 
 
-	patrol_start.position = curve.get_closest_point(Vector2.ZERO)
+	patrol_start.position = curve.get_point_position(0)

@@ -61,7 +61,7 @@ func aggro_behaviour():
 		nav_to_goal() # Goal is player
 
 func patrol_behaviour():
-	pass
+	velocity = Vector2.ZERO # Depend on patrol path for movement
 
 func return_patrol_behaviour():	
 	if (not nav_comp.is_target_reachable()):
@@ -88,7 +88,7 @@ func switch_state(new_state : EnemyState):
 func switch_to_patrol():
 	current_state = EnemyState.PATROL
 	if (patrol_path == null):
-		printerr("No patrol path for enemy ")
+		printerr("No patrol path for enemy")
 		return
 	patrol_path.add_new_patroller(self, SPEED)
 
