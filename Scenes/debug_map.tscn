@@ -69,25 +69,30 @@ position = Vector2(-363, 95)
 player = NodePath("../../PlayerCharacter")
 patrol_path = NodePath("../../PatrolPaths/PatrolPath2")
 
-[node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
 position = Vector2(-281, 157)
 player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath2")
 
-[node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
 position = Vector2(-338, 11)
 player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath2")
 
-[node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
 position = Vector2(98, -61)
 player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath")
 
-[node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
 position = Vector2(119, 225)
 player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath")
 
-[node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+[node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("player", "patrol_path") instance=ExtResource("4_6mob1")]
 position = Vector2(-80, 320)
 player = NodePath("../../PlayerCharacter")
+patrol_path = NodePath("../../PatrolPaths/PatrolPath2")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
