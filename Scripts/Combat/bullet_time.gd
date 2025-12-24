@@ -17,11 +17,10 @@ func activate_bullet_time():
 	
 	can_activate = false
 	Engine.time_scale = slowdown
-	var cooldown_time : Signal = get_tree().create_timer(cooldown).timeout
 	
 	await get_tree().create_timer(bullet_time_duration).timeout
 	Engine.time_scale = 1
 	
-	await cooldown_time
+	await  get_tree().create_timer(cooldown - bullet_time_duration).timeout
 	
 	can_activate = true

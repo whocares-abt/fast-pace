@@ -12,17 +12,40 @@ extends CharacterBody2D
 
 @export var goal : Node2D
 
-func _ready() -> void:
-	update_goal(goal)
+var current_state
 
-func update_goal(new_goal):
+enum EnemyState {
+	PATROL, # Enemy patrols particular path
+	AGGRO, # Enemy chases player
+	RETURN_TO_PATROL
+}
+
+
+func _ready() -> void:
+	current_state = EnemyState.PATROL
+	update_nav_goal(goal)
+
+func update_nav_goal(new_goal):
 	nav_comp.set_goal(new_goal)
 
 func _physics_process(_delta: float) -> void:	
-	if (not nav_comp.is_target_reached()):
-		var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized()
-		velocity = nav_point_direction*SPEED
-		move_and_slide()
+	match current_state:
+		EnemyState.AGGRO:
+			if (not nav_comp.is_target_reachable()):
+				current_state = EnemyState.PATROL
+				
+			if (not nav_comp.is_target_reached()):
+				nav_to_goal()
+
+		EnemyState.PATROL:
+			pass
+
+	move_and_slide()
+
+func nav_to_goal():
+	var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized()
+	velocity = nav_point_direction*SPEED
+
 
 # Func for enemy death
 

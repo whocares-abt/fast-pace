@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_i26gt"]
 [ext_resource type="PackedScene" uid="uid://ybredfnd482x" path="res://Scenes/Combat/bullet_time.tscn" id="3_mnpb2"]
 [ext_resource type="PackedScene" uid="uid://bipbfe8i3mrdl" path="res://Scenes/Combat/knife_throw.tscn" id="4_hicqa"]
-[ext_resource type="Material" uid="uid://ijfsf3vcuj55" path="res://Resources/Particles/player_blood_splatter.tres" id="5_tj02q"]
+[ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="7_mnpb2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i26gt"]
 atlas = ExtResource("2_c2rcm")
@@ -65,7 +65,7 @@ emitting = false
 amount = 1000
 lifetime = 0.3
 one_shot = true
-process_material = ExtResource("5_tj02q")
+process_material = ExtResource("7_mnpb2")
 
 [node name="HealthTimer" type="Timer" parent="."]
 wait_time = 0.5
