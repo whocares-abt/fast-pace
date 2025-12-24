@@ -10,7 +10,10 @@ extends CharacterBody2D
 
 @onready var nav_comp = $NavComp
 
-@export var goal : Node2D
+@export var player_goal : Node2D
+@export var patrol_path : Path2D
+
+# Defining state
 
 enum EnemyState {
 	PATROL, # Enemy patrols particular path
@@ -26,13 +29,8 @@ func get_current_state():
 func set_current_state(new_state):
 	current_state = new_state
 
-
 func _ready() -> void:
 	current_state = EnemyState.PATROL
-	update_nav_goal(goal)
-
-func update_nav_goal(new_goal):
-	nav_comp.set_goal(new_goal)
 
 func _physics_process(_delta: float) -> void:	
 	match current_state:
@@ -42,7 +40,12 @@ func _physics_process(_delta: float) -> void:
 		EnemyState.PATROL:
 			pass
 
+		EnemyState.RETURN_TO_PATROL:
+			pass
+
 	move_and_slide()
+
+# Simulating state behaviour
 
 func aggro_behaviour():
 	if (not nav_comp.is_target_reachable()):
@@ -52,10 +55,15 @@ func aggro_behaviour():
 		nav_to_goal()
 
 
+# Switching states
+
+# Navigation functions
+func update_nav_goal(new_goal):
+	nav_comp.set_goal(new_goal)
+
 func nav_to_goal():
 	var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized()
 	velocity = nav_point_direction*SPEED
-
 
 # Func for enemy death
 

@@ -1,26 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://4lipgn085g6v"]
+[gd_scene load_steps=2 format=3 uid="uid://4lipgn085g6v"]
 
-[ext_resource type="Texture2D" uid="uid://b2qj2q5pmpkst" path="res://icon.svg" id="1_2370k"]
 [ext_resource type="Script" uid="uid://t8njqhiyhehh" path="res://Scripts/AI/patrol_path.gd" id="1_cptgr"]
-
-[sub_resource type="Curve2D" id="Curve2D_cptgr"]
-_data = {
-"points": PackedVector2Array(142.0994, 507.29483, -142.0994, -507.29483, -568, 167, -589.71246, 98.048584, 589.71246, -98.048584, 12, -373, 0, -346.7225, 0, 346.7225, 668, -116, 272.83084, -4.262982, -272.83084, 4.262982, 272, 400, 0, 0, 0, 0, -568, 167)
-}
-point_count = 5
 
 [node name="PatrolPath" type="Path2D"]
 scale = Vector2(0.9503747, 0.9503747)
-curve = SubResource("Curve2D_cptgr")
 script = ExtResource("1_cptgr")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(6.42222e-05, -1.605555e-05)
-texture = ExtResource("1_2370k")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0.0001284444, -3.21111e-05)
-texture = ExtResource("1_2370k")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)

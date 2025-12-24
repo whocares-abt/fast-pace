@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=12 format=3 uid="uid://b2auqnh7xqqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
@@ -6,8 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 [ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
 [ext_resource type="PackedScene" uid="uid://cwav53n6w8kp3" path="res://Scenes/AI/navigation_region.tscn" id="5_gu212"]
+[ext_resource type="PackedScene" uid="uid://4lipgn085g6v" path="res://Scenes/AI/patrol_path.tscn" id="6_60603"]
 [ext_resource type="PackedScene" uid="uid://dm4gkq86dil4c" path="res://Scenes/UI/game_ui.tscn" id="7_gnyyd"]
 [ext_resource type="Script" uid="uid://bhgtcghfpf7w4" path="res://Scripts/UI/game_ui.gd" id="8_1on00"]
+
+[sub_resource type="Curve2D" id="Curve2D_60603"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -65.23743, 336.7093, 0, 0, 0, 0, -62.080776, -219.91325, 0, 0, 0, 0, 284.09845, -225.17433, 0, 0, 0, 0, 284.09845, 334.60486, 0, 0, 0, 0, -65.23743, 336.7093)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_ctkch"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -593.45013, 334.60486, 0, 0, 0, 0, -598.7112, -228.331, 0, 0, 0, 0, -163.09357, -229.38321, 0, 0, 0, 0, -163.09357, 339.86594, 0, 0, 0, 0, -593.45013, 334.60486)
+}
+point_count = 5
 
 [node name="DebugMap" type="Node2D"]
 
@@ -18,6 +31,7 @@ SPEED = 500.0
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 
 [node name="NavigationRegion" parent="." instance=ExtResource("5_gu212")]
+visible = false
 navigation_polygon = ExtResource("3_frd8m")
 
 [node name="Walls" type="Node2D" parent="."]
@@ -71,6 +85,14 @@ goal = NodePath("../../PlayerCharacter")
 [node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("goal") instance=ExtResource("4_6mob1")]
 position = Vector2(-80, 320)
 goal = NodePath("../../PlayerCharacter")
+
+[node name="PatrolPaths" type="Node2D" parent="."]
+
+[node name="PatrolPath" parent="PatrolPaths" instance=ExtResource("6_60603")]
+curve = SubResource("Curve2D_60603")
+
+[node name="PatrolPath2" parent="PatrolPaths" instance=ExtResource("6_60603")]
+curve = SubResource("Curve2D_ctkch")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 
