@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpwhnhgxkydrx"]
+
+[ext_resource type="Script" uid="uid://d4cfqyjxki0wo" path="res://Scripts/AI/patrol_component.gd" id="1_k2np0"]
+
+[sub_resource type="Curve2D" id="Curve2D_3mvby"]
+
+[node name="PatrolComponent" type="Path2D"]
+curve = SubResource("Curve2D_3mvby")
+script = ExtResource("1_k2np0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="PatrolStart" type="Node2D" parent="."]

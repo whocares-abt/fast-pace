@@ -20,6 +20,8 @@ func add_new_patroller(node : Node2D, patrol_speed : float):
 	node.transform = new_path_follow.transform
 	
 	node.reparent(new_path_follow)
+	
+	return new_path_follow
 
 func create_new_path_follow(patrol_speed : float):
 	var path_follow = PathFollow2D.new()
@@ -29,8 +31,9 @@ func create_new_path_follow(patrol_speed : float):
 	path_follow_dict[path_follow] = patrol_speed
 	return path_follow
 
-func remove_patrol_path(patrol_path : PathFollow2D):
-	# Remove patrol path if they have no child
+func pause_patrol_path_follow(patrol_path : PathFollow2D):
+	# Remove patrol path
+	path_follow_dict.erase(patrol_path)
 	remove_child(patrol_path)
 
 func get_start_node():

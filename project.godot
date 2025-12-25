@@ -69,6 +69,7 @@ bullet_time={
 2d_physics/layer_2="Hitbox/Hurtboxes"
 2d_physics/layer_3="Enemy/Environment"
 2d_physics/layer_4="Destroyable objects like bullets/Environment"
+2d_physics/layer_5="Vision"
 
 [rendering]
 

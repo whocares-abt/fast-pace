@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://og744yjrgqlu"]
+
+[ext_resource type="Script" uid="uid://dc4fp7jobnvfh" path="res://Scripts/AI/vision_detector.gd" id="1_ugat2"]
+
+[node name="VisionDetector" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ugat2")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 24
+collide_with_areas = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

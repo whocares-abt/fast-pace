@@ -1,25 +1,30 @@
 extends CharacterBody2D
 
-@export var SPEED = 300
-
+# Child nodes
 @onready var particle = $GPUParticles2D
-@onready var animation_sprite = $AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D
 
 @onready var collision_body = $CollisionShape2D
 @onready var hitbox = $Hitbox
 
 @onready var nav_comp = $NavComp
+@onready var patrol_comp = $PatrolComp
+@onready var vision_comp = $VisionDetector
 
+# Interacting with map
+@export var SPEED = 300
 @export var player : Node2D
-@export var patrol_path : Path2D
+@export var patrol_path : Curve2D
+
 var patrol_start_point
+var patrollers
 
 # Defining state
 
 enum EnemyState {
 	PATROL, # Enemy patrols particular path
 	AGGRO, # Enemy chases player
-	RETURN_TO_PATROL # Enemy returns to patrol after deaggro
+	RETURN_PATROL # Enemy returns to patrol after deaggro
 }
 
 var current_state : EnemyState
@@ -27,16 +32,24 @@ var current_state : EnemyState
 func get_current_state():
 	return current_state
 
-func set_current_state(new_state):
-	current_state = new_state
+# Ready and update funcion
 
 func _ready() -> void:
-	if (patrol_path == null):
-		printerr("No patrol path")
-	else:
-		patrol_start_point = patrol_path.get_start_node()
+	patrol_comp.update_patrol_path(patrol_path)
 	
-	switch_state(EnemyState.RETURN_TO_PATROL)
+	patrol_comp.update_patrol_speed(300)
+	patrol_start_point = patrol_comp.get_patrol_start()
+	patrollers = [sprite, particle, collision_body, hitbox, vision_comp]
+	
+	current_state = EnemyState.AGGRO
+	
+	await get_tree().create_timer(5).timeout
+	
+	switch_state(EnemyState.RETURN_PATROL)
+	
+	await get_tree().create_timer(5).timeout
+	
+	switch_state(EnemyState.AGGRO)
 
 func _physics_process(_delta: float) -> void:	
 	match current_state:
@@ -46,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 		EnemyState.PATROL:
 			patrol_behaviour()
 
-		EnemyState.RETURN_TO_PATROL:
+		EnemyState.RETURN_PATROL:
 			return_patrol_behaviour()
 
 	move_and_slide()
@@ -55,7 +68,8 @@ func _physics_process(_delta: float) -> void:
 
 func aggro_behaviour():
 	if (not nav_comp.is_target_reachable()):
-		switch_state(EnemyState.RETURN_TO_PATROL)
+		switch_state(EnemyState.RETURN_PATROL)
+		pass
 		
 	if (not nav_comp.is_target_reached()):
 		nav_to_goal() # Goal is player
@@ -75,6 +89,16 @@ func return_patrol_behaviour():
 # Switching states
 
 func switch_state(new_state : EnemyState):
+	match current_state:
+		EnemyState.PATROL:
+			switch_from_patrol()
+		
+		EnemyState.AGGRO:
+			switch_from_aggro()
+			
+		EnemyState.RETURN_PATROL:
+			switch_from_return_patrol()
+	
 	match new_state:
 		EnemyState.PATROL:
 			switch_to_patrol()
@@ -82,27 +106,42 @@ func switch_state(new_state : EnemyState):
 		EnemyState.AGGRO:
 			switch_to_aggro()
 		
-		EnemyState.RETURN_TO_PATROL:
+		EnemyState.RETURN_PATROL:
 			switch_to_return_patrol()
 
+# Exiting current state
+
+func switch_from_patrol():
+	var curr_transform = patrol_comp.get_position_in_patrol()
+	var patrollers = patrol_comp.get_patrollers() 
+	for i in patrollers:
+		i.reparent(self)
+	transform = curr_transform
+
+func switch_from_aggro():
+	update_nav_goal(null)
+
+func switch_from_return_patrol():
+	update_nav_goal(null)
+
+# Entering new states
+
 func switch_to_patrol():
-	current_state = EnemyState.PATROL
-	if (patrol_path == null):
-		printerr("No patrol path for enemy")
-		return
-	patrol_path.add_new_patroller(self, SPEED)
+	# In patrol we put sprite, collision, hitbox and vision comp into patrol path
+	patrol_comp.add_patrollers(patrollers)
+	patrol_comp.start_patrol()
+	pass
 
 func switch_to_aggro():
 	current_state = EnemyState.AGGRO
 	update_nav_goal(player)
 	
 func switch_to_return_patrol():
-	current_state = EnemyState.RETURN_TO_PATROL
+	current_state = EnemyState.RETURN_PATROL
 	if (patrol_start_point == null):
 		printerr("No patrol start point")
 		return
 	update_nav_goal(patrol_start_point)
-
 
 # Navigation functions
 func update_nav_goal(new_goal):
@@ -116,7 +155,7 @@ func nav_to_goal():
 
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Player" in area.hurtbox_owners):
-		animation_sprite.play("dead")
+		sprite.play("dead")
 		particle.emitting = true
 		disable_enemy.call_deferred()
 
@@ -134,3 +173,9 @@ func disable_enemy():
 func pause_particle_process():
 	# To prevent particles from despawning - blood splatters stay
 	particle.process_mode = Node.PROCESS_MODE_DISABLED
+
+# On detecting player
+
+func _on_vision_detector_player_detected(player: Node2D) -> void:
+	switch_state(EnemyState.AGGRO)
+	print("HELOO")

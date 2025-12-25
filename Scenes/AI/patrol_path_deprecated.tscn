@@ -8,13 +8,9 @@ scale = Vector2(0.9503747, 0.9503747)
 curve = ExtResource("1_ndmey")
 script = ExtResource("1_cptgr")
 
-[node name="PatrolStart" type="Node2D" parent="."]
-
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(-593.71606, 314.7132)
-rotation = -1.5801418
-progress = 19.741707
-h_offset = -0.08
-rotates = false
+position = Vector2(-531.3696, 251.42729)
+rotation = -1.5767685
+progress = 0.1
 
-[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+[node name="PatrolStart" type="Node2D" parent="."]

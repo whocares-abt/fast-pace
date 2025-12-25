@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://uriwqjsj2l17"]
+[gd_scene load_steps=13 format=3 uid="uid://uriwqjsj2l17"]
 
 [ext_resource type="Texture2D" uid="uid://bkgx3t4wcwml7" path="res://Assets/Art/Textures/Characters/Enemy.png" id="1_kjxs3"]
 [ext_resource type="Script" uid="uid://rgjg7yqphkf0" path="res://Scripts/Characters/enemy_character.gd" id="1_nraa5"]
 [ext_resource type="PackedScene" uid="uid://u2sytbk4b1vf" path="res://Scenes/AI/navigation_component.tscn" id="2_f31sj"]
+[ext_resource type="PackedScene" uid="uid://og744yjrgqlu" path="res://Scenes/AI/vision_detector.tscn" id="3_mwus0"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_sdh2x"]
+[ext_resource type="PackedScene" uid="uid://bpwhnhgxkydrx" path="res://Scenes/AI/patrol_component.tscn" id="3_v16rk"]
 [ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="4_najb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nraa5"]
@@ -35,14 +37,14 @@ radius = 16.03122
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdh2x"]
 radius = 21.023796
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwus0"]
+size = Vector2(185, 20)
+
 [node name="EnemyCharacter" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_nraa5")
-
-[node name="NavComp" parent="." instance=ExtResource("2_f31sj")]
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdh2x")
@@ -55,6 +57,17 @@ shape = SubResource("CircleShape2D_nraa5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_sdh2x")
 
+[node name="NavComp" parent="." instance=ExtResource("2_f31sj")]
+debug_enabled = true
+
+[node name="PatrolComp" parent="." instance=ExtResource("3_v16rk")]
+
+[node name="VisionDetector" parent="." instance=ExtResource("3_mwus0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionDetector"]
+position = Vector2(117, 0)
+shape = SubResource("RectangleShape2D_mwus0")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = -5
 emitting = false
@@ -64,3 +77,4 @@ one_shot = true
 process_material = ExtResource("4_najb4")
 
 [connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]
+[connection signal="player_detected" from="VisionDetector" to="." method="_on_vision_detector_player_detected"]
