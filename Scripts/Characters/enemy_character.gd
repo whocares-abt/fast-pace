@@ -20,7 +20,8 @@ var patrol_start_point
 enum EnemyState {
 	PATROL, # Enemy patrols particular path
 	AGGRO, # Enemy chases player
-	RETURN_PATROL # Enemy returns to patrol after deaggro
+	RETURN_PATROL, # Enemy returns to patrol after deaggro
+	DEAD
 }
 
 var current_state : EnemyState
@@ -43,6 +44,9 @@ func _physics_process(_delta: float) -> void:
 
 		EnemyState.RETURN_PATROL:
 			return_patrol_behaviour()
+
+		EnemyState.DEAD:
+			dead_behaviour()
 
 	move_and_slide()
 
@@ -68,6 +72,9 @@ func return_patrol_behaviour():
 	else:
 		switch_state(EnemyState.PATROL)
 
+func dead_behaviour():
+	velocity = Vector2.ZERO # Depend on patrol path for movement
+
 # Switching states
 
 func switch_state(new_state : EnemyState):
@@ -80,6 +87,9 @@ func switch_state(new_state : EnemyState):
 			
 		EnemyState.RETURN_PATROL:
 			switch_from_return_patrol()
+			
+		EnemyState.DEAD:
+			pass
 	
 	match new_state:
 		EnemyState.PATROL:
@@ -90,6 +100,9 @@ func switch_state(new_state : EnemyState):
 		
 		EnemyState.RETURN_PATROL:
 			switch_to_return_patrol()
+			
+		EnemyState.DEAD:
+			current_state = EnemyState.DEAD
 
 # Exiting current state
 
@@ -140,6 +153,7 @@ func disable_enemy():
 	hitbox.monitoring = false
 	nav_comp.set_goal(null)
 	CombatSignalBus.emit_signal("enemy_died")
+	switch_state(EnemyState.DEAD)
 	
 	# To prevent blood splashes from disappearing
 	await get_tree().create_timer(particle.lifetime).timeout

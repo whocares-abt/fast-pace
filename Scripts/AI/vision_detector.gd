@@ -9,7 +9,7 @@ func _on_area_entered(area: Area2D) -> void:
 	var vector_to_player = (area.global_position - global_position)
 	vision_raycast.set_target_position(2*vector_to_player)
 
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.01).timeout
 
 	if (vision_raycast.get_collider()):
 		var colliding_obj = vision_raycast.get_collider()

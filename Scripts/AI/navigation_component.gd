@@ -8,6 +8,8 @@ var goal : Node2D
 
 func set_goal(new_goal):
 	goal = new_goal
+	if (goal != null):
+		target_position = goal.global_position
 	nav_timer.start(time)
 
 func _on_nav_timer_timeout() -> void:
