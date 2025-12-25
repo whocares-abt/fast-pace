@@ -1,19 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=9 format=3 uid="uid://b2auqnh7xqqrx"]
 
-[ext_resource type="Script" uid="uid://bu5wty21ks84t" path="res://Scripts/debug_map.gd" id="1_ctkch"]
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
 [ext_resource type="NavigationPolygon" uid="uid://bs5dweb3g7xgm" path="res://Resources/NavPoly/debug_map.tres" id="3_frd8m"]
 [ext_resource type="PackedScene" uid="uid://uriwqjsj2l17" path="res://Scenes/Characters/enemy_character.tscn" id="4_6mob1"]
 [ext_resource type="PackedScene" uid="uid://b4la54oa07emn" path="res://Scenes/Combat/bullet_manager.tscn" id="4_gu212"]
 [ext_resource type="PackedScene" uid="uid://cwav53n6w8kp3" path="res://Scenes/AI/navigation_region.tscn" id="5_gu212"]
-[ext_resource type="Curve2D" uid="uid://b4ilbtjs3th6l" path="res://Resources/Patrols/debug_map_patrol_1.tres" id="7_ctkch"]
 [ext_resource type="PackedScene" uid="uid://dm4gkq86dil4c" path="res://Scenes/UI/game_ui.tscn" id="7_gnyyd"]
 [ext_resource type="Script" uid="uid://bhgtcghfpf7w4" path="res://Scripts/UI/game_ui.gd" id="8_1on00"]
-[ext_resource type="Curve2D" uid="uid://dxle0d5do3eli" path="res://Resources/Patrols/debug_map_patrol_2.tres" id="8_i7f47"]
 
 [node name="DebugMap" type="Node2D"]
-script = ExtResource("1_ctkch")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
 position = Vector2(431, 43)
@@ -56,32 +52,26 @@ scale = Vector2(1, 15)
 [node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-363, 95)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("7_ctkch")
 
 [node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-281, 157)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("8_i7f47")
 
 [node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-338, 11)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("8_i7f47")
 
 [node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(98, -61)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("7_ctkch")
 
 [node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(119, 225)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("8_i7f47")
 
 [node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-80, 320)
 player = NodePath("../../PlayerCharacter")
-patrol_path = ExtResource("7_ctkch")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
 

@@ -8,16 +8,12 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 
 @onready var nav_comp = $NavComp
-@onready var patrol_comp = $PatrolComp
-@onready var vision_comp = $VisionDetector
+@onready var patrol_comp = $PatrolComponent
 
 # Interacting with map
 @export var SPEED = 300
 @export var player : Node2D
-@export var patrol_path : Curve2D
-
 var patrol_start_point
-var patrollers
 
 # Defining state
 
@@ -35,19 +31,17 @@ func get_current_state():
 # Ready and update funcion
 
 func _ready() -> void:
-	patrol_comp.update_patrol_path(patrol_path)
-	
-	patrol_comp.update_patrol_speed(300)
+
 	patrol_start_point = patrol_comp.get_patrol_start()
-	patrollers = [sprite, particle, collision_body, hitbox, vision_comp]
-	
+
 	current_state = EnemyState.AGGRO
+	switch_state(EnemyState.AGGRO)
 	
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(1).timeout
 	
 	switch_state(EnemyState.RETURN_PATROL)
 	
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(2).timeout
 	
 	switch_state(EnemyState.AGGRO)
 
@@ -112,11 +106,7 @@ func switch_state(new_state : EnemyState):
 # Exiting current state
 
 func switch_from_patrol():
-	var curr_transform = patrol_comp.get_position_in_patrol()
-	var patrollers = patrol_comp.get_patrollers() 
-	for i in patrollers:
-		i.reparent(self)
-	transform = curr_transform
+	pass
 
 func switch_from_aggro():
 	update_nav_goal(null)
@@ -127,10 +117,7 @@ func switch_from_return_patrol():
 # Entering new states
 
 func switch_to_patrol():
-	# In patrol we put sprite, collision, hitbox and vision comp into patrol path
-	patrol_comp.add_patrollers(patrollers)
-	patrol_comp.start_patrol()
-	pass
+	current_state = EnemyState.PATROL
 
 func switch_to_aggro():
 	current_state = EnemyState.AGGRO
@@ -176,6 +163,6 @@ func pause_particle_process():
 
 # On detecting player
 
-func _on_vision_detector_player_detected(player: Node2D) -> void:
-	switch_state(EnemyState.AGGRO)
+func _on_vision_detector_player_detected(_player: Node2D) -> void:
+	#switch_state(EnemyState.AGGRO)
 	print("HELOO")

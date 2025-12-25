@@ -6,8 +6,9 @@ signal player_detected(player : Node2D)
 @onready var vision_raycast = $RayCast2D
 
 func _on_area_entered(area: Area2D) -> void:
-	vision_raycast.set_target_position(area.position)
-	print(vision_raycast.is_colliding())
-	if (vision_raycast.get_collider()):
-		var colliding_obj = vision_raycast.get_collider()
-		player_detected.emit()
+	#vision_raycast.set_target_position(area.position)
+	#print(vision_raycast.is_colliding())
+	#if (vision_raycast.get_collider()):
+		#var colliding_obj = vision_raycast.get_collider()
+		#player_detected.emit()
+	pass

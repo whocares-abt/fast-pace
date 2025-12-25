@@ -60,11 +60,11 @@ shape = SubResource("CircleShape2D_sdh2x")
 [node name="NavComp" parent="." instance=ExtResource("2_f31sj")]
 debug_enabled = true
 
-[node name="PatrolComp" parent="." instance=ExtResource("3_v16rk")]
+[node name="PatrolComponent" parent="." instance=ExtResource("3_v16rk")]
 
-[node name="VisionDetector" parent="." instance=ExtResource("3_mwus0")]
+[node name="VisionComp" parent="." instance=ExtResource("3_mwus0")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionComp"]
 position = Vector2(117, 0)
 shape = SubResource("RectangleShape2D_mwus0")
 
@@ -77,4 +77,4 @@ one_shot = true
 process_material = ExtResource("4_najb4")
 
 [connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]
-[connection signal="player_detected" from="VisionDetector" to="." method="_on_vision_detector_player_detected"]
+[connection signal="player_detected" from="VisionComp" to="." method="_on_vision_detector_player_detected"]

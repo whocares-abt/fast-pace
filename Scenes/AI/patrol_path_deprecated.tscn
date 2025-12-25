@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4lipgn085g6v"]
 
-[ext_resource type="Script" uid="uid://t8njqhiyhehh" path="res://Scripts/AI/patrol_path.gd" id="1_cptgr"]
+[ext_resource type="Script" uid="uid://t8njqhiyhehh" path="res://Scripts/AI/patrol_path_deprecated.gd" id="1_cptgr"]
 [ext_resource type="Curve2D" uid="uid://dxle0d5do3eli" path="res://Resources/Patrols/debug_map_patrol_2.tres" id="1_ndmey"]
 
 [node name="PatrolPath" type="Path2D"]
