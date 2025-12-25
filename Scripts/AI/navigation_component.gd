@@ -15,5 +15,5 @@ func _on_nav_timer_timeout() -> void:
 		nav_timer.stop()
 		return
 	
-	if (target_position - goal.global_position).length() > path_recalc_threshold:
-		target_position = goal.global_position
+	#if (target_position - goal.global_position).length() > path_recalc_threshold:
+	target_position = goal.global_position
