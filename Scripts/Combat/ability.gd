@@ -12,14 +12,14 @@ var can_activate : bool
 func _ready() -> void:
 	pass # Replace with function body.
 
-func update_stats(stats : AbilityStats):
+func update_stats():
 	ability_name = ability_stats.ability_name
 	mana_cost = ability_stats.mana_cost
 	cooldown = ability_stats.cooldown
 
 func load_stats(file_name):
 	ability_stats = load(file_name)
-	update_stats(ability_stats)
+	update_stats()
 
 var activate : Callable = func():
 	pass

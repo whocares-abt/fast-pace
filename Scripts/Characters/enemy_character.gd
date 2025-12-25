@@ -31,19 +31,7 @@ func get_current_state():
 # Ready and update funcion
 
 func _ready() -> void:
-
 	patrol_start_point = patrol_comp.get_patrol_start()
-
-	current_state = EnemyState.AGGRO
-	switch_state(EnemyState.AGGRO)
-	
-	await get_tree().create_timer(1).timeout
-	
-	switch_state(EnemyState.RETURN_PATROL)
-	
-	await get_tree().create_timer(2).timeout
-	
-	switch_state(EnemyState.AGGRO)
 
 func _physics_process(_delta: float) -> void:	
 	match current_state:
@@ -164,5 +152,5 @@ func pause_particle_process():
 # On detecting player
 
 func _on_vision_detector_player_detected(_player: Node2D) -> void:
-	#switch_state(EnemyState.AGGRO)
-	print("HELOO")
+	switch_state(EnemyState.AGGRO)
+	pass
