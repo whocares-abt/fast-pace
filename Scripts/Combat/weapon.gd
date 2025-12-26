@@ -100,3 +100,6 @@ func add_hurtbox_owners(new_owners):
 	for new_owner in new_owners:
 		hurtbox_owners.append(new_owner)
 	melee_hurtbox.add_hurtbox_owners(new_owners)
+
+func reduce_melee_hurtbox():
+	$WeaponPivot/AttackHurtbox/CollisionShape2D.scale = Vector2(0.7, 0.7)

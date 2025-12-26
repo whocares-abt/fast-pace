@@ -16,5 +16,5 @@ func cut_polygon_from_mesh(polygon : Polygon2D, polygon_transform):
 
 	# Recreating the mesh with polygons cut out
 	
-	if (get_child_count() == 6):
+	if (get_child_count() == 7):
 		bake_navigation_polygon()

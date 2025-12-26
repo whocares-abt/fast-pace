@@ -35,7 +35,8 @@ func get_current_state():
 # Ready and update funcion
 
 func _ready() -> void:
-	weapon.equip_weapon("pistol")
+	weapon.equip_weapon(weapon_name)
+	weapon.reduce_melee_hurtbox()
 	weapon.add_hurtbox_owners(["Enemy"])
 	patrol_start_point = patrol_comp.get_patrol_start()
 
@@ -58,10 +59,10 @@ func _physics_process(_delta: float) -> void:
 # Simulating state behaviour
 
 func aggro_behaviour():
-	if (player == null):
-		switch_state(EnemyState.RETURN_PATROL)
-		return
-	
+	#if (player == null):
+		#switch_state(EnemyState.RETURN_PATROL)
+		#return
+	#
 	if (not nav_comp.is_target_reachable()):
 		switch_state(EnemyState.RETURN_PATROL)
 		pass
@@ -69,7 +70,7 @@ func aggro_behaviour():
 	if (not nav_comp.is_target_reached()):
 		nav_to_goal() # Goal is player
 	
-	weapon.attack(player.global_position - global_position)
+	#weapon.attack(player.global_position - global_position)
 
 func patrol_behaviour():
 	velocity = Vector2.ZERO # Depend on patrol path for movement
@@ -147,7 +148,7 @@ func update_nav_goal(new_goal):
 	nav_comp.set_goal(new_goal)
 
 func nav_to_goal():
-	var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized()
+	var nav_point_direction = to_local(nav_comp.get_next_path_position()).normalized().rotated(rotation)
 	velocity = nav_point_direction*SPEED
 
 # Func for enemy death

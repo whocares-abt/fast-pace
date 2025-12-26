@@ -13,10 +13,9 @@
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
 position = Vector2(431, 43)
-SPEED = 500.0
+SPEED = 600.0
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
-zoom = Vector2(0.5, 0.5)
 
 [node name="NavigationRegion" parent="." instance=ExtResource("5_gu212")]
 navigation_polygon = ExtResource("3_frd8m")
@@ -27,21 +26,25 @@ navigation_polygon = ExtResource("3_frd8m")
 position = Vector2(-151.00003, -259)
 scale = Vector2(30, 1)
 
+[node name="Wall7" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(-314, 47)
+scale = Vector2(12, 1)
+
+[node name="Wall8" parent="Walls" instance=ExtResource("2_jcsea")]
+position = Vector2(203, 41)
+scale = Vector2(12, 1)
+
 [node name="Wall2" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-612, 50)
-scale = Vector2(1, 20)
+position = Vector2(-615, 24)
+scale = Vector2(1, 18)
 
 [node name="Wall3" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-113, 125)
+position = Vector2(-112, 48.000008)
 scale = Vector2(1, 15)
 
 [node name="Wall4" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-141.00002, 362)
+position = Vector2(-141.00002, 306)
 scale = Vector2(30, 1)
-
-[node name="Wall5" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-612, 50)
-scale = Vector2(1, 20)
 
 [node name="Wall6" parent="Walls" instance=ExtResource("2_jcsea")]
 position = Vector2(314, -24)
@@ -50,27 +53,41 @@ scale = Vector2(1, 15)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-363, 95)
+position = Vector2(-199, 118)
+rotation = 3.1415927
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(-540, 248)
+rotation = 4.712389
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-281, 157)
+position = Vector2(-193, 215)
+rotation = 3.1415927
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-338, 11)
+position = Vector2(-527, -49)
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(98, -61)
+position = Vector2(94.000015, -62.000008)
+rotation = 6.2769513
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(119, 225)
+position = Vector2(-55, 178)
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-80, 320)
+position = Vector2(-38, -178)
+rotation = 7.8540463
+player = NodePath("../../PlayerCharacter")
+
+[node name="EnemyCharacter8" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
+position = Vector2(-204, -5)
+rotation = 4.712389
 player = NodePath("../../PlayerCharacter")
 
 [node name="BulletManager" parent="." instance=ExtResource("4_gu212")]
