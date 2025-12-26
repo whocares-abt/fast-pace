@@ -16,3 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if (colliding_obj.get_collision_layer_value(5)):
 			player_detected.emit(colliding_obj)
 	pass
+
+func disable_vision():
+	monitorable = false
+	monitoring = false

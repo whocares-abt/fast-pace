@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # Child nodes
+@onready var weapon = $Weapon
 @onready var particle = $GPUParticles2D
 @onready var sprite = $AnimatedSprite2D
 
@@ -9,10 +10,12 @@ extends CharacterBody2D
 
 @onready var nav_comp = $NavComp
 @onready var patrol_comp = $PatrolComponent
+@onready var vision_comp = $VisionComp
 
 # Interacting with map
 @export var SPEED = 300
 @export var player : Node2D
+@export var weapon_name = "pistol"
 var patrol_start_point
 
 # Defining state
@@ -32,6 +35,8 @@ func get_current_state():
 # Ready and update funcion
 
 func _ready() -> void:
+	weapon.equip_weapon("pistol")
+	weapon.add_hurtbox_owners(["Enemy"])
 	patrol_start_point = patrol_comp.get_patrol_start()
 
 func _physics_process(_delta: float) -> void:	
@@ -53,12 +58,18 @@ func _physics_process(_delta: float) -> void:
 # Simulating state behaviour
 
 func aggro_behaviour():
+	if (player == null):
+		switch_state(EnemyState.RETURN_PATROL)
+		return
+	
 	if (not nav_comp.is_target_reachable()):
 		switch_state(EnemyState.RETURN_PATROL)
 		pass
 		
 	if (not nav_comp.is_target_reached()):
 		nav_to_goal() # Goal is player
+	
+	weapon.attack(player.global_position - global_position)
 
 func patrol_behaviour():
 	velocity = Vector2.ZERO # Depend on patrol path for movement
@@ -143,20 +154,21 @@ func nav_to_goal():
 
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Player" in area.hurtbox_owners):
-		sprite.play("dead")
-		particle.emitting = true
 		disable_enemy.call_deferred()
 
 func disable_enemy():
+	sprite.play("dead")
 	collision_body.disabled = true
-	hitbox.monitorable = false
-	hitbox.monitoring = false
-	nav_comp.set_goal(null)
+	
+	hitbox.disable_hitbox()
+	vision_comp.disable_vision()
+	
 	CombatSignalBus.emit_signal("enemy_died")
-	switch_state(EnemyState.DEAD)
 	
 	# To prevent blood splashes from disappearing
+	particle.emitting = true
 	await get_tree().create_timer(particle.lifetime).timeout
+	switch_state(EnemyState.DEAD)
 	pause_particle_process()
 
 func pause_particle_process():

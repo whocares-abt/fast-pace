@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://uriwqjsj2l17"]
+[gd_scene load_steps=14 format=3 uid="uid://uriwqjsj2l17"]
 
 [ext_resource type="Texture2D" uid="uid://bkgx3t4wcwml7" path="res://Assets/Art/Textures/Characters/Enemy.png" id="1_kjxs3"]
 [ext_resource type="Script" uid="uid://rgjg7yqphkf0" path="res://Scripts/Characters/enemy_character.gd" id="1_nraa5"]
 [ext_resource type="PackedScene" uid="uid://u2sytbk4b1vf" path="res://Scenes/AI/navigation_component.tscn" id="2_f31sj"]
+[ext_resource type="PackedScene" uid="uid://nbsjmjd7do3s" path="res://Scenes/Combat/weapon.tscn" id="2_p5gug"]
 [ext_resource type="PackedScene" uid="uid://og744yjrgqlu" path="res://Scenes/AI/vision_detector.tscn" id="3_mwus0"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_sdh2x"]
 [ext_resource type="PackedScene" uid="uid://bpwhnhgxkydrx" path="res://Scenes/AI/patrol_component.tscn" id="3_v16rk"]
@@ -45,6 +46,8 @@ collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_nraa5")
+
+[node name="Weapon" parent="." instance=ExtResource("2_p5gug")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sdh2x")
