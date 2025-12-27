@@ -65,12 +65,12 @@ func aggro_behaviour():
 		switch_state(EnemyState.RETURN_PATROL)
 		return
 	#
-	if (not nav_comp.is_target_reachable()):
-		switch_state(EnemyState.RETURN_PATROL)
-		pass
-		
-	if (not nav_comp.is_target_reached()):
-		nav_to_goal() # Goal is player
+	#if (not nav_comp.is_target_reachable()):
+		#switch_state(EnemyState.RETURN_PATROL)
+		#pass
+		#
+	#if (not nav_comp.is_target_reached()):
+		#nav_to_goal() # Goal is player
 	
 	weapon.attack(player.global_position - global_position)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfeafjqb4thpf"]
+[gd_scene load_steps=15 format=3 uid="uid://cfeafjqb4thpf"]
 
 [ext_resource type="Script" uid="uid://dxgq4xe00pby6" path="res://Scripts/Characters/player_character.gd" id="1_l560e"]
 [ext_resource type="PackedScene" uid="uid://nbsjmjd7do3s" path="res://Scenes/Combat/Weapon/weapon.tscn" id="2_3pywu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_i26gt"]
 [ext_resource type="PackedScene" uid="uid://ybredfnd482x" path="res://Scenes/Combat/Abilities/bullet_time.tscn" id="3_mnpb2"]
 [ext_resource type="PackedScene" uid="uid://bipbfe8i3mrdl" path="res://Scenes/Combat/Abilities/knife_throw.tscn" id="4_hicqa"]
+[ext_resource type="PackedScene" uid="uid://c7u0wqf3t1s4j" path="res://Scenes/Combat/Abilities/sword_dash.tscn" id="5_f176k"]
 [ext_resource type="PackedScene" uid="uid://dde0kstwj0d7" path="res://Scenes/AI/vision_hitbox.tscn" id="6_hicqa"]
 [ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="7_mnpb2"]
 
@@ -51,6 +52,8 @@ script = ExtResource("1_l560e")
 [node name="BulletTime" parent="CombatAbilities" instance=ExtResource("3_mnpb2")]
 
 [node name="KnifeThrow" parent="CombatAbilities" instance=ExtResource("4_hicqa")]
+
+[node name="SwordDash" parent="CombatAbilities" instance=ExtResource("5_f176k")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oigcr")

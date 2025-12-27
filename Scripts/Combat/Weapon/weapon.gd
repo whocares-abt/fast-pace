@@ -74,7 +74,7 @@ func attack(attack_direction : Vector2):
 	can_attack = true
 
 func rotate_pivot(direction):
-	pivot.rotation = direction.angle()
+	pivot.global_rotation = direction.angle()
 
 func ranged_attack(direction):
 	var bullet = projectile.instantiate()

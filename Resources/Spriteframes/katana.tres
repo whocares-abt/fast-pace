@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b7gqg47jgrs8k"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b7gqg47jgrs8k"]
 
 [ext_resource type="Texture2D" uid="uid://b83dtq5qiarie" path="res://Assets/Art/Textures/Combat/attack_anim.png" id="2_j1emh"]
 
@@ -13,14 +13,6 @@ region = Rect2(128, 0, 64, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ed6y"]
 atlas = ExtResource("2_j1emh")
 region = Rect2(192, 0, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_504ub"]
-atlas = ExtResource("2_j1emh")
-region = Rect2(256, 0, 64, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hlpt"]
-atlas = ExtResource("2_j1emh")
-region = Rect2(320, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jvek"]
 atlas = ExtResource("2_j1emh")
@@ -37,16 +29,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ed6y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_504ub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2hlpt")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,

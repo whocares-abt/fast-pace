@@ -7,6 +7,7 @@ var health = 1
 @onready var weapon = $CombatAbilities/Weapon
 @onready var knife_throw = $CombatAbilities/KnifeThrow
 @onready var bullet_time = $CombatAbilities/BulletTime
+@onready var sword_dash = $CombatAbilities/SwordDash
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -37,11 +38,10 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("attack")):
 		weapon.attack(attack_direction.normalized())
 		
-	if (event.is_action_pressed("ability")):
+	if (event.is_action_pressed("knife_throw")):
 		# TODO: Should we decouple this code? Can it even be decoupled?
 		if (knife_throw.can_activate):
 			var mana_cost = knife_throw.get_mana_cost()
-			print(attack_direction)
 			knife_throw.activate.call(attack_direction, position)
 			update_health(-mana_cost)
 		
@@ -49,6 +49,12 @@ func _input(event: InputEvent) -> void:
 		if (bullet_time.can_activate):
 			var mana_cost = bullet_time.get_mana_cost()
 			bullet_time.activate.call()
+			update_health(-mana_cost)
+
+	if (event.is_action_pressed("sword_dash")):
+		if (sword_dash.can_activate):
+			var mana_cost = sword_dash.get_mana_cost()
+			sword_dash.activate.call(attack_direction, position)
 			update_health(-mana_cost)
 
 func _physics_process(_delta: float) -> void:
@@ -72,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Enemy" in area.hurtbox_owners):
-		self.queue_free()
+		disable_player()
 
 func _on_health_timer_timeout() -> void:
 	update_health(-1)
