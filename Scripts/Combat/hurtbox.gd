@@ -18,4 +18,5 @@ func disable_hurtbox():
 
 func deflection(deflection_hitbox_owners):
 	add_hurtbox_owners(deflection_hitbox_owners)
+	hurtbox_owners.erase("Enemy")
 	deflect.emit()
