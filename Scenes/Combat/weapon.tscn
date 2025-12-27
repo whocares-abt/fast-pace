@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://nbsjmjd7do3s"]
+[gd_scene load_steps=8 format=3 uid="uid://nbsjmjd7do3s"]
 
 [ext_resource type="Script" uid="uid://dffme2003u822" path="res://Scripts/Combat/weapon.gd" id="1_krqjp"]
 [ext_resource type="SpriteFrames" uid="uid://8kbpv5bys0d" path="res://Resources/Spriteframes/pistol.tres" id="2_6f3fa"]
 [ext_resource type="PackedScene" uid="uid://c6yca5h55hus" path="res://Scenes/Combat/hurtbox.tscn" id="2_k4liq"]
+[ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="4_io3wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4liq"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f3fa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_io3wf"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_krqjp")
@@ -20,4 +26,30 @@ animation = &"idle"
 position = Vector2(30, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/AttackHurtbox"]
+position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_k4liq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WeaponPivot/AttackHurtbox"]
+position = Vector2(-20, -20)
+shape = SubResource("RectangleShape2D_6f3fa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WeaponPivot/AttackHurtbox"]
+position = Vector2(-20, 19)
+shape = SubResource("RectangleShape2D_io3wf")
+
+[node name="DeflectionHitbox" parent="WeaponPivot" instance=ExtResource("4_io3wf")]
+position = Vector2(30, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/DeflectionHitbox"]
+position = Vector2(-10, 0)
+shape = SubResource("RectangleShape2D_k4liq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WeaponPivot/DeflectionHitbox"]
+position = Vector2(-20, -20)
+shape = SubResource("RectangleShape2D_6f3fa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WeaponPivot/DeflectionHitbox"]
+position = Vector2(-20, 19)
+shape = SubResource("RectangleShape2D_io3wf")
+
+[connection signal="hurtbox_entered" from="WeaponPivot/DeflectionHitbox" to="." method="_on_deflection_hitbox_hurtbox_entered"]

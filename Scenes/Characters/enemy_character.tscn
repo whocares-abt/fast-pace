@@ -39,7 +39,7 @@ radius = 16.03122
 radius = 25.019993
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwus0"]
-size = Vector2(325, 225)
+size = Vector2(325, 75)
 
 [node name="EnemyCharacter" type="CharacterBody2D"]
 collision_layer = 4
@@ -65,10 +65,24 @@ debug_enabled = true
 
 [node name="PatrolComponent" parent="." instance=ExtResource("3_v16rk")]
 
-[node name="VisionComp" parent="." instance=ExtResource("3_mwus0")]
+[node name="VisionCone" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionComp"]
-position = Vector2(205.5, 0)
+[node name="VisionComp1" parent="VisionCone" instance=ExtResource("3_mwus0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionCone/VisionComp1"]
+position = Vector2(162, 0)
+shape = SubResource("RectangleShape2D_mwus0")
+
+[node name="VisionComp2" parent="VisionCone" instance=ExtResource("3_mwus0")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="VisionCone/VisionComp2"]
+position = Vector2(162, -75)
+shape = SubResource("RectangleShape2D_mwus0")
+
+[node name="VisionComp3" parent="VisionCone" instance=ExtResource("3_mwus0")]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="VisionCone/VisionComp3"]
+position = Vector2(162, 75)
 shape = SubResource("RectangleShape2D_mwus0")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -80,4 +94,6 @@ one_shot = true
 process_material = ExtResource("4_najb4")
 
 [connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]
-[connection signal="player_detected" from="VisionComp" to="." method="_on_vision_detector_player_detected"]
+[connection signal="player_detected" from="VisionCone/VisionComp1" to="." method="_on_vision_detector_player_detected"]
+[connection signal="player_detected" from="VisionCone/VisionComp2" to="." method="_on_vision_detector_player_detected"]
+[connection signal="player_detected" from="VisionCone/VisionComp3" to="." method="_on_vision_detector_player_detected"]

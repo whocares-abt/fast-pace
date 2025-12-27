@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 @onready var nav_comp = $NavComp
 @onready var patrol_comp = $PatrolComponent
-@onready var vision_comp = $VisionComp
+@onready var vision_cone = $VisionCone
 
 # Interacting with map
 @export var SPEED = 300
@@ -37,6 +37,7 @@ func get_current_state():
 func _ready() -> void:
 	weapon.equip_weapon(weapon_name)
 	weapon.reduce_melee_hurtbox()
+	weapon.remove_deflection()
 	weapon.add_hurtbox_owners(["Enemy"])
 	patrol_start_point = patrol_comp.get_patrol_start()
 
@@ -59,9 +60,9 @@ func _physics_process(_delta: float) -> void:
 # Simulating state behaviour
 
 func aggro_behaviour():
-	#if (player == null):
-		#switch_state(EnemyState.RETURN_PATROL)
-		#return
+	if (player == null):
+		switch_state(EnemyState.RETURN_PATROL)
+		return
 	#
 	if (not nav_comp.is_target_reachable()):
 		switch_state(EnemyState.RETURN_PATROL)
@@ -162,7 +163,9 @@ func disable_enemy():
 	collision_body.disabled = true
 	
 	hitbox.disable_hitbox()
-	vision_comp.disable_vision()
+	
+	for vision_comp in vision_cone.get_children():
+		vision_comp.disable_vision()
 	
 	CombatSignalBus.emit_signal("enemy_died")
 	

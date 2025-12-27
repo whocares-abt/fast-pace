@@ -30,6 +30,7 @@ var sprite_frame_map = {
 @onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
 @onready var melee_hurtbox = $WeaponPivot/AttackHurtbox
 @onready var sprite = $WeaponPivot/AnimatedSprite2D
+@onready var deflection_hitbox = $WeaponPivot/DeflectionHitbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -103,3 +104,10 @@ func add_hurtbox_owners(new_owners):
 
 func reduce_melee_hurtbox():
 	$WeaponPivot/AttackHurtbox/CollisionShape2D.scale = Vector2(0.7, 0.7)
+
+func remove_deflection():
+	
+
+
+func _on_deflection_hitbox_hurtbox_entered(area: Variant) -> void:
+	pass # Replace with function body.
