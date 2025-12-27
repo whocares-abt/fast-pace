@@ -24,7 +24,7 @@ func activate_knife_throw(direction, start_position):
 	knife.set_speed(projectile_speed)
 	knife.set_direction(direction)
 	knife.add_hurtbox_owners(["Player"])
-	knife.change_sprite("knife")
+	knife.change_bullet_type("knife")
 	
 	CombatSignalBus.emit_signal("bullet_shot", knife, start_position)
 	

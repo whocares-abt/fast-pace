@@ -8,5 +8,5 @@ ranged = true
 weapon_name = "pistol"
 firing_rate = 1.0
 attack_hold = 0.1
-projectile_speed = 3000.0
+projectile_speed = 1500.0
 metadata/_custom_type_script = "uid://dqsfxyh6jojdx"

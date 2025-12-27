@@ -36,6 +36,7 @@ var sprite_frame_map = {
 func _ready() -> void:
 	equip_weapon("katana")
 	melee_hurtbox.disable_hurtbox()
+	deflection_hitbox.disable_hitbox()
 
 func update_stats():
 	ranged = stats.ranged
@@ -91,8 +92,10 @@ func ranged_attack(direction):
 
 func melee_attack():
 	melee_hurtbox.enable_hurtbox()
+	deflection_hitbox.enable_hitbox()
 	await get_tree().create_timer(attack_hold).timeout
 	melee_hurtbox.disable_hurtbox()
+	deflection_hitbox.disable_hitbox()
 
 func get_hurtbox_location():
 	return melee_hurtbox.global_position
@@ -106,8 +109,7 @@ func reduce_melee_hurtbox():
 	$WeaponPivot/AttackHurtbox/CollisionShape2D.scale = Vector2(0.7, 0.7)
 
 func remove_deflection():
-	
-
+	deflection_hitbox.queue_free()
 
 func _on_deflection_hitbox_hurtbox_entered(area: Variant) -> void:
-	pass # Replace with function body.
+	area.deflection(hurtbox_owners)

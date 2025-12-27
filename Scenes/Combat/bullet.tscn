@@ -40,5 +40,6 @@ trail_enabled = true
 trail_lifetime = 0.06999999999999999
 process_material = ExtResource("4_3m52h")
 
+[connection signal="deflect" from="Hurtbox" to="." method="_on_hurtbox_deflect"]
 [connection signal="area_entered" from="EnvironmentCollider" to="." method="_on_environment_collider_area_entered"]
 [connection signal="body_entered" from="EnvironmentCollider" to="." method="_on_environment_collider_body_entered"]

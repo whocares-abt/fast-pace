@@ -71,7 +71,7 @@ func aggro_behaviour():
 	if (not nav_comp.is_target_reached()):
 		nav_to_goal() # Goal is player
 	
-	#weapon.attack(player.global_position - global_position)
+	weapon.attack(player.global_position - global_position)
 
 func patrol_behaviour():
 	velocity = Vector2.ZERO # Depend on patrol path for movement

@@ -8,6 +8,7 @@ extends Node2D
 @export var velocity : Vector2 = Vector2(700, 0)
 
 @export var map_edge = 1500
+var bullet_type
 
 var sprite_map = {
 	"bullet" : "res://Assets/Art/Textures/Combat/bullet.png",
@@ -18,6 +19,7 @@ func add_hurtbox_owners(new_owners):
 	hurtbox.add_hurtbox_owners(new_owners)
 
 func _ready() -> void:
+	bullet_type = "bullet"
 	await get_tree().create_timer(0.05).timeout
 	enable_particles()
 
@@ -26,12 +28,13 @@ func _process(delta: float) -> void:
 	if (abs(position.x) > map_edge || abs(position.y) > map_edge):
 		queue_free()
 
-func change_sprite(new_sprite):
-	var sprite_file = sprite_map[new_sprite]
+func change_bullet_type(new_type):
+	bullet_type = new_type
+	var sprite_file = sprite_map[bullet_type]
 	sprite.texture = load(sprite_file)
 	
 	# Remove trail for knife
-	if (new_sprite == "knife"):
+	if (new_type == "knife"):
 		particles.amount_ratio = 0
 
 # Changing velocity
@@ -55,3 +58,7 @@ func _on_environment_collider_body_entered(_body: Node2D) -> void:
 
 func enable_particles():
 	particles.emitting = true
+
+func _on_hurtbox_deflect() -> void:
+	if (bullet_type == "bullet"):
+		velocity = -velocity

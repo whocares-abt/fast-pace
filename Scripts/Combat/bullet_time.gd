@@ -1,7 +1,7 @@
 extends Ability
 
-@export var slowdown = 0.3
-@export var bullet_time_duration = 1
+@export var slowdown = 0.1
+@export var bullet_time_duration = 3
 
 func _ready() -> void:
 	load_stats("res://Resources/Combat/bullet_time.tres")
