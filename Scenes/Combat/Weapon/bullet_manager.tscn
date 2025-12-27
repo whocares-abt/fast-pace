@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4la54oa07emn"]
 
-[ext_resource type="Script" uid="uid://keuhgcbsvxr8" path="res://Scripts/Combat/bullet_manager.gd" id="1_qwloc"]
+[ext_resource type="Script" uid="uid://keuhgcbsvxr8" path="res://Scripts/Combat/Weapon/bullet_manager.gd" id="1_qwloc"]
 
 [node name="BulletManager" type="Node2D"]
 script = ExtResource("1_qwloc")

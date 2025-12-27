@@ -1,6 +1,6 @@
 extends Ability
 
-var projectile = preload("res://Scenes/Combat/bullet.tscn")
+var projectile = preload("uid://bfqk0r7mpuyuo")
 @export var projectile_speed = 2000
 
 func _ready() -> void:

@@ -54,7 +54,8 @@ func _physics_process(_delta: float) -> void:
 
 		EnemyState.DEAD:
 			dead_behaviour()
-
+	
+	sprite.rotation = velocity.angle()
 	move_and_slide()
 
 # Simulating state behaviour

@@ -2,7 +2,7 @@ extends Node2D
 
 var ranged : bool
 var weapon_name : String
-var projectile = preload("res://Scenes/Combat/bullet.tscn")
+var projectile = preload("uid://bfqk0r7mpuyuo")
 
 # Both ranged and melee weapons
 var firing_rate : float

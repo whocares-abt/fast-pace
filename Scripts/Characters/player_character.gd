@@ -41,7 +41,8 @@ func _input(event: InputEvent) -> void:
 		# TODO: Should we decouple this code? Can it even be decoupled?
 		if (knife_throw.can_activate):
 			var mana_cost = knife_throw.get_mana_cost()
-			knife_throw.activate.call(attack_direction, weapon.get_hurtbox_location())
+			print(attack_direction)
+			knife_throw.activate.call(attack_direction, position)
 			update_health(-mana_cost)
 		
 	if (event.is_action_pressed("bullet_time")):

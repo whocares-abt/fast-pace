@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://cfeafjqb4thpf"]
 
 [ext_resource type="Script" uid="uid://dxgq4xe00pby6" path="res://Scripts/Characters/player_character.gd" id="1_l560e"]
-[ext_resource type="PackedScene" uid="uid://nbsjmjd7do3s" path="res://Scenes/Combat/weapon.tscn" id="2_3pywu"]
+[ext_resource type="PackedScene" uid="uid://nbsjmjd7do3s" path="res://Scenes/Combat/Weapon/weapon.tscn" id="2_3pywu"]
 [ext_resource type="Texture2D" uid="uid://blfonbnnkwt7m" path="res://Assets/Art/Textures/Characters/Player.png" id="2_c2rcm"]
 [ext_resource type="PackedScene" uid="uid://jtjvgtyiaplq" path="res://Scenes/Combat/hitbox.tscn" id="3_i26gt"]
-[ext_resource type="PackedScene" uid="uid://ybredfnd482x" path="res://Scenes/Combat/bullet_time.tscn" id="3_mnpb2"]
-[ext_resource type="PackedScene" uid="uid://bipbfe8i3mrdl" path="res://Scenes/Combat/knife_throw.tscn" id="4_hicqa"]
+[ext_resource type="PackedScene" uid="uid://ybredfnd482x" path="res://Scenes/Combat/Abilities/bullet_time.tscn" id="3_mnpb2"]
+[ext_resource type="PackedScene" uid="uid://bipbfe8i3mrdl" path="res://Scenes/Combat/Abilities/knife_throw.tscn" id="4_hicqa"]
 [ext_resource type="PackedScene" uid="uid://dde0kstwj0d7" path="res://Scenes/AI/vision_hitbox.tscn" id="6_hicqa"]
 [ext_resource type="Material" uid="uid://bljcxy5kcv03j" path="res://Resources/Particles/blood_splatter.tres" id="7_mnpb2"]
 
