@@ -20,7 +20,7 @@ script = ExtResource("1_krqjp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponPivot"]
 position = Vector2(30, 0)
 sprite_frames = ExtResource("2_7nkvt")
-animation = &"attack"
+animation = &"idle"
 
 [node name="AttackHurtbox" parent="WeaponPivot" instance=ExtResource("2_k4liq")]
 position = Vector2(30, 0)

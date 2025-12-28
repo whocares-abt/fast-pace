@@ -78,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hitbox_hurtbox_entered(area: Variant) -> void:
 	if ("Enemy" in area.hurtbox_owners):
-		disable_player()
+		update_health(-max_health)
 
 func _on_health_timer_timeout() -> void:
 	update_health(-1)
