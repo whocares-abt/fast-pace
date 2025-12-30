@@ -92,10 +92,12 @@ func ranged_attack(direction):
 
 func melee_attack():
 	melee_hurtbox.enable_hurtbox()
-	deflection_hitbox.enable_hitbox()
+	if (deflection_hitbox):
+		deflection_hitbox.enable_hitbox()
 	await get_tree().create_timer(attack_hold).timeout
+	if (deflection_hitbox):
+		deflection_hitbox.disable_hitbox()
 	melee_hurtbox.disable_hurtbox()
-	deflection_hitbox.disable_hitbox()
 
 func get_hurtbox_location():
 	return melee_hurtbox.global_position

@@ -80,7 +80,7 @@ one_shot = true
 process_material = ExtResource("7_mnpb2")
 
 [node name="HealthTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 autostart = true
 
 [connection signal="hurtbox_entered" from="Hitbox" to="." method="_on_hitbox_hurtbox_entered"]
