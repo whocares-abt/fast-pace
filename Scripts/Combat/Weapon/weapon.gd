@@ -20,11 +20,13 @@ var stats : WeaponStats
 var weapon_stat_map = {
 	"pistol" : "res://Resources/Combat/pistol.tres",
 	"katana" : "res://Resources/Combat/katana.tres",
+	"enemy_katana" : "res://Resources/Combat/enemy_katana.tres",
 }
 
 var sprite_frame_map = {
 	"pistol" : "res://Resources/Spriteframes/pistol.tres",
 	"katana" : "res://Resources/Spriteframes/katana.tres",
+	"enemy_katana" : "res://Resources/Spriteframes/katana.tres",
 }
 
 @onready var pivot = $WeaponPivot # For rotating hitboxes and sprites
@@ -108,7 +110,7 @@ func add_hurtbox_owners(new_owners):
 	melee_hurtbox.add_hurtbox_owners(new_owners)
 
 func reduce_melee_hurtbox():
-	$WeaponPivot/AttackHurtbox/CollisionShape2D.scale = Vector2(0.7, 0.7)
+	$WeaponPivot/AttackHurtbox/CollisionShape2D.scale = Vector2(0.5, 0.5)
 
 func remove_deflection():
 	deflection_hitbox.queue_free()

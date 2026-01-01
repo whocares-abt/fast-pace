@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://dci5cnwfjqpi4"]
+
+[ext_resource type="Script" uid="uid://dqsfxyh6jojdx" path="res://Scripts/Resources/Combat/weapon_stats.gd" id="1_vowpq"]
+
+[resource]
+script = ExtResource("1_vowpq")
+weapon_name = "enemy_katana"
+firing_rate = 1.0
+attack_hold = 0.1
+metadata/_custom_type_script = "uid://dqsfxyh6jojdx"

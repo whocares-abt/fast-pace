@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2auqnh7xqqrx"]
+[gd_scene load_steps=11 format=3 uid="uid://b2auqnh7xqqrx"]
 
+[ext_resource type="Script" uid="uid://bu5wty21ks84t" path="res://Scripts/debug_map.gd" id="1_60603"]
 [ext_resource type="PackedScene" uid="uid://cfeafjqb4thpf" path="res://Scenes/Characters/player_character.tscn" id="1_ngmhs"]
 [ext_resource type="PackedScene" uid="uid://bu0d3bicfpl4t" path="res://Scenes/Environment/wall.tscn" id="2_jcsea"]
 [ext_resource type="NavigationPolygon" uid="uid://bs5dweb3g7xgm" path="res://Resources/NavPoly/debug_map.tres" id="3_frd8m"]
@@ -12,6 +13,7 @@
 [sub_resource type="AudioStream" id="AudioStream_1on00"]
 
 [node name="DebugMap" type="Node2D"]
+script = ExtResource("1_60603")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_ngmhs")]
 position = Vector2(431, 43)
@@ -55,10 +57,10 @@ scale = Vector2(1, 15)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyCharacter" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-199, 118)
+position = Vector2(-277, 118)
 rotation = 3.1415927
 player = NodePath("../../PlayerCharacter")
-weapon_name = "katana"
+weapon_name = "enemy_katana"
 
 [node name="EnemyCharacter7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-540, 248)
@@ -66,10 +68,10 @@ rotation = 4.712389
 player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
-position = Vector2(-193, 215)
+position = Vector2(-271, 215)
 rotation = 3.1415927
 player = NodePath("../../PlayerCharacter")
-weapon_name = "katana"
+weapon_name = "enemy_katana"
 
 [node name="EnemyCharacter3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-527, -49)
@@ -77,8 +79,9 @@ player = NodePath("../../PlayerCharacter")
 
 [node name="EnemyCharacter4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(94.000015, -62.000008)
-rotation = 6.2769513
+rotation = 3.1415927
 player = NodePath("../../PlayerCharacter")
+weapon_name = "enemy_katana"
 
 [node name="EnemyCharacter5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("4_6mob1")]
 position = Vector2(-55, 178)
