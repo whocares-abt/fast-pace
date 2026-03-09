@@ -32,11 +32,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nraa5"]
-radius = 16.03122
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5gug"]
+radius = 0.01
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdh2x"]
-radius = 25.019993
+radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwus0"]
 size = Vector2(325, 75)
@@ -53,7 +53,7 @@ script = ExtResource("1_nraa5")
 sprite_frames = SubResource("SpriteFrames_sdh2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nraa5")
+shape = SubResource("CircleShape2D_p5gug")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_sdh2x")]
 

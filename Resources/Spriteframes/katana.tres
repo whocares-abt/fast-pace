@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b7gqg47jgrs8k"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b7gqg47jgrs8k"]
 
 [ext_resource type="Texture2D" uid="uid://b83dtq5qiarie" path="res://Assets/Art/Textures/Combat/attack_anim.png" id="2_j1emh"]
 

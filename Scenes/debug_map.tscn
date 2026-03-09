@@ -43,7 +43,7 @@ position = Vector2(-615, 24)
 scale = Vector2(1, 18)
 
 [node name="Wall3" parent="Walls" instance=ExtResource("2_jcsea")]
-position = Vector2(-112, 48.000008)
+position = Vector2(-112, 102)
 scale = Vector2(1, 15)
 
 [node name="Wall4" parent="Walls" instance=ExtResource("2_jcsea")]

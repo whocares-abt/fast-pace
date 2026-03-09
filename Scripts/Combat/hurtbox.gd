@@ -10,11 +10,9 @@ func add_hurtbox_owners(new_owners):
 
 func enable_hurtbox():
 	monitorable = true
-	monitoring = true
 
 func disable_hurtbox():
 	monitorable = false
-	monitoring = false
 
 func deflection(deflection_hitbox_owners):
 	add_hurtbox_owners(deflection_hitbox_owners)
